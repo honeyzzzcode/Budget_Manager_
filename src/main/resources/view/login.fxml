@@ -1,0 +1,26 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<GridPane fx:controller="controller.LoginController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+        style="-fx-background-color: lavender" >
+  <Text text="Welcome to login page" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"
+        style="-fx-font-size: 28px; -fx-text-fill: black; -fx-background-color: pink"/>
+
+  <Label text="Enter your username" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-size: 18px; "/>
+  <TextField fx:id="usernameField" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-font-size: 18px; "/>
+
+  <Label text="Enter your password" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 18px; "/>
+  <PasswordField fx:id="passwordField" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-size: 18px; "/>
+
+  <Button text="Register" GridPane.rowIndex="3" onAction="#handleLoadRegister" GridPane.columnIndex="0"
+    style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: pink"/>
+  <Button text="Login" GridPane.rowIndex="3" onAction="#handleUserLogin" GridPane.columnIndex="1"
+    style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: pink"/>
+
+  <Label GridPane.rowIndex="5" fx:id="notificationLabel" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+</GridPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          fx:controller="controller.MenuController" style="-fx-background-color: lavender">
+    <Button onAction="#addIncome" text="ADD INCOME" GridPane.rowIndex="1" GridPane.columnIndex="0"
+            style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 40px"/>
+    <Button text="ADD EXPENSE" GridPane.rowIndex="1" onAction="#addExpense" GridPane.columnIndex="1"
+            style="-fx-font-size: 40px; -fx-text-fill: black; -fx-background-color: pink"/>
+    <Button onAction="#handleLogout" text="LOGOUT" GridPane.rowIndex="15" GridPane.columnIndex="0"
+            style="-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 25px"/></GridPane>

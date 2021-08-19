@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+  fx:controller="controller.ProfileController" style="-fx-background-color: lavender" >
+  <Label text="User Profile" GridPane.rowIndex="0" style="-fx-font-size: 40px; -fx-text-fill: pink"
+    GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+  <Label text="User Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+  <Label fx:id="userNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+  <Label text="Phone Number" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+  <Label fx:id="phoneNumberLabel" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+  <Label text="Email Address" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+  <Label fx:id="emailAddressLabel" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+  <Label text="Current Budget" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-text-fill: black "/>
+  <Label fx:id="budgetLabel" GridPane.rowIndex="4" GridPane.columnIndex="2" style="-fx-font-size: 16px;"/>
+  <Label text="€" GridPane.columnIndex="3" GridPane.rowIndex="4"
+         style="-fx-font-size: 16px;"/>
+
+  <Label text="Name" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+  <Label fx:id="nameLabel" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+
+  <Label text="Last Updated" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+  <Label fx:id="updatedAtLabel" GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+
+  <Label text="Last created" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+  <Label fx:id="createdAtLabel" GridPane.rowIndex="8" GridPane.columnIndex="2"/>
+
+  <Button onAction="#handleLogout" text="Logout" GridPane.rowIndex="15" GridPane.columnIndex="0"
+    style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 20px"/>
+
+  <Button text="MENU" GridPane.rowIndex="15" onAction="#showMenu" GridPane.columnIndex="1"
+          style="-fx-font-size: 20px; -fx-text-fill: black; -fx-background-color: pink"/>
+
+
+</GridPane>
