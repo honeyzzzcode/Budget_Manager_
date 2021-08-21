@@ -6,8 +6,9 @@ import java.sql.Timestamp;
 
 public class User {
 
-
-
+  public void setBudget(Float budget) {
+    this.budget = budget;
+  }
   public Integer getId() {
     return id;
   }

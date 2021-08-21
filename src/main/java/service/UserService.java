@@ -89,30 +89,4 @@ public class UserService {
     return users;
   }
 
-  public void addIncome(Money money) throws Exception {
-    String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
-    PreparedStatement statement = connection.prepareStatement(query);
-    statement.setString(1, money.getInOrOut());
-    statement.setString(2, money.getCategory());
-    statement.setFloat(3, money.getAmount());
-
-
-
-    statement.executeUpdate();
-    DBHandler.close(statement, connection);
-  }
-
-  public void addExpense(Money money)throws Exception {
-    String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
-    PreparedStatement statement = connection.prepareStatement(query);
-    statement.setString(1, money.getInOrOut());
-    statement.setString(2, money.getCategory());
-    statement.setFloat(3, money.getAmount());
-
-
-
-    statement.executeUpdate();
-    DBHandler.close(statement, connection);
-
-  }
 }

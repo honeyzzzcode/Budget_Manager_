@@ -6,11 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.Money;
+import service.MoneyService;
 import service.UserService;
 
 public class IncomeController extends ViewController{
 
-    UserService userService = new UserService();
+    MoneyService moneyService = new MoneyService();
 
     public TextField amountField;
     public TextField categoryField;
@@ -23,7 +24,7 @@ public class IncomeController extends ViewController{
                             Float.parseFloat(amountField.getText()));
 
 
-            userService.addIncome(money);
+            moneyService.addIncome(money);
 
             showAlert("Success", "Income added successfully, continue", Alert.AlertType.CONFIRMATION);
             changeScene(actionEvent, "menu");
