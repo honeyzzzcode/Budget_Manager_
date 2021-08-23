@@ -11,9 +11,10 @@ import model.User;
 import repository.DBHandler;
 
 public class UserService {
-  private final Connection connection = DBHandler.getConnection();
+  private  Connection connection = DBHandler.getConnection();
 
   public int verifyUserDetails(String username, String password) throws Exception {
+    connection = DBHandler.getConnection();
     String query = "SELECT id FROM users WHERE userName = ? && password = ? LIMIT 1";
     PreparedStatement statement = connection.prepareStatement(query);
     statement.setString(1, username);
@@ -32,6 +33,7 @@ public class UserService {
   }
 
   public User getUserProfile(int userId) throws Exception {
+    connection = DBHandler.getConnection();
     String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt "
         + "FROM users WHERE id = ? LIMIT 1";
     PreparedStatement statement = connection.prepareStatement(query);
@@ -55,6 +57,7 @@ public class UserService {
   }
 
   public void registerUser(User user) throws Exception {
+    connection = DBHandler.getConnection();
     String query = "INSERT INTO users(name, userName, password,budget,email, phone  ) VALUES(?,?,?,?,?,?)";
     PreparedStatement statement = connection.prepareStatement(query);
     statement.setString(1, user.getName());
@@ -71,6 +74,7 @@ public class UserService {
   }
 
   public ArrayList<User> getAllUsers() throws Exception {
+    connection = DBHandler.getConnection();
 
     ArrayList<User> users = new ArrayList<>();
     String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt FROM users";

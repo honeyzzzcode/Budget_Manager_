@@ -3,8 +3,10 @@ package controller;
 import Types.Category;
 import Types.InOrOut;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import model.AppData;
 import model.Money;
@@ -18,7 +20,9 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-public class ExpenseController extends ViewController  {
+public class ExpenseController extends ViewController implements Initializable {
+    @FXML
+    private ChoiceBox<String> CBCategory;
     MoneyService moneyService = new MoneyService();
     public TextField amountField;
     public TextField categoryField;
@@ -34,15 +38,15 @@ public class ExpenseController extends ViewController  {
         try {
             Money money = new Money
                     (InOrOut.EXPENSE,
-                            Category.valueOf(categoryField.getText()),
+                            Category.valueOf(CBCategory.getValue()),
                             Float.parseFloat(amountField.getText()));
 
             moneyService.addExpense(money);
 
 
-               int id = Integer.parseInt(p.getString("userID"));
-                User user = moneyService.getUserProfile(id);
-                user.setBudget(user.getBudget()-Float.parseFloat(amountField.getText()));
+            int id = Integer.parseInt(p.getString("userID"));
+            User user = moneyService.getUserProfile(id);
+            user.setBudget(user.getBudget() - Float.parseFloat(amountField.getText()));
 
             moneyService.updateBudget(user, user.getId());
 
@@ -56,5 +60,15 @@ public class ExpenseController extends ViewController  {
     }
 
 
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        CBCategory.getItems().add(String.valueOf(Category.CAR));
+        CBCategory.getItems().add(String.valueOf(Category.EATING_OUT));
+        CBCategory.getItems().add(String.valueOf(Category.ENTERTAINMENT));
+        CBCategory.getItems().add(String.valueOf(Category.GIFTS));
+        CBCategory.getItems().add(String.valueOf(Category.GROCERIES));
+        CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
+        CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
+        CBCategory.getItems().add(String.valueOf(Category.GOALS));
+    }
 }

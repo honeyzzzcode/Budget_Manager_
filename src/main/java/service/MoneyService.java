@@ -9,8 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class MoneyService {
-    private final Connection connection = DBHandler.getConnection();
+    private  Connection connection = DBHandler.getConnection();
     public User getUserProfile(int userId) throws Exception {
+        connection = DBHandler.getConnection();
         String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt "
                 + "FROM users WHERE id = ? LIMIT 1";
         Connection connection1 = DBHandler.getConnection();
@@ -34,6 +35,7 @@ public class MoneyService {
         return user;
     }
     public void addIncome(Money money) throws Exception {
+        connection = DBHandler.getConnection();
         String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, money.getInOrOut());
@@ -47,6 +49,7 @@ public class MoneyService {
     }
 
     public void addExpense(Money money) throws Exception {
+        connection = DBHandler.getConnection();
         String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, money.getInOrOut());
@@ -61,6 +64,7 @@ public class MoneyService {
     }
 
     public void updateBudget(User user,int userId) throws Exception{
+        connection = DBHandler.getConnection();
         String query = "UPDATE users SET budget = ? where id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setFloat(1,user.getBudget());
