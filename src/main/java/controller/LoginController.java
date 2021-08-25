@@ -1,4 +1,5 @@
 package controller;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -18,23 +19,26 @@ public class LoginController extends ViewController {
 
   public Label notificationLabel;
   public TextField usernameField;
+public Integer userID;
   @FXML
   PasswordField passwordField;
   UserService userService = new UserService();
 
   public void handleUserLogin(ActionEvent actionEvent) {
-    PropertiesConfiguration p = new PropertiesConfiguration();
+    Property prop = new Property();
     try {
-      p.load("userID.properties");
-    } catch (ConfigurationException e) {
+      prop.PropertiesLoad();
+    } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     try {
       int userId = userService.verifyUserDetails(usernameField.getText(), passwordField.getText());
       AppData.getInstance().setLoggedInUserId(userId);
+      userID= userId;
       notificationLabel.setText("Login successful");
       changeScene(actionEvent, "profile");
-      p.setProperty("userID",String.valueOf(userId));
+      prop.setProperty("userID",String.valueOf(userId));
+      prop.saveProp();
     }catch (Exception ex){
       showAlert("Login Failed", ex.getMessage(), AlertType.ERROR);
     }

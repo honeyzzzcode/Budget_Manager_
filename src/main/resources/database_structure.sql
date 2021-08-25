@@ -20,5 +20,6 @@ id int not null auto_increment,
 inOrOut varchar(100) not null,
 category varchar(100) not null,
 amount float not null,
+userID int not null,
 primary key(id)
 )

@@ -19,13 +19,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class IncomeController extends ViewController implements Initializable {
-@FXML
+    @FXML
     private ChoiceBox<String> CBCategory;
     MoneyService moneyService = new MoneyService();
 
     public TextField amountField;
+    int result;
 
-    public void  addIncome(ActionEvent actionEvent){
+
+
+    public void   addIncome(ActionEvent actionEvent){
         PropertiesConfiguration p = new PropertiesConfiguration();
         try {
             p.load("userID.properties");
@@ -38,13 +41,13 @@ public class IncomeController extends ViewController implements Initializable {
                             Category.valueOf(CBCategory.getValue()),
                             Float.parseFloat(amountField.getText()));
 
-            moneyService.addIncome(money);
+
 
 
             int id = Integer.parseInt(p.getString("userID"));
             User user = moneyService.getUserProfile(id);
             user.setBudget(user.getBudget() + Float.parseFloat(amountField.getText()));
-
+            moneyService.addIncome(money);
             moneyService.updateBudget(user, user.getId());
 
 

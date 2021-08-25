@@ -1,30 +1,30 @@
 package model;
 
+import org.apache.commons.configuration.PropertiesConfiguration;
+
 import java.io.*;
 import java.util.Properties;
 
 public class Property {
-    private final Properties configProp = new Properties();
 
-    private void PropertiesCache()
-    {
-        //Private constructor to restrict new instances
-        InputStream in = this.getClass().getClassLoader().getResourceAsStream("userID.properties");
-        System.out.println("Reading all properties from the file");
+Properties prop = new Properties();
+    public void PropertiesLoad() throws FileNotFoundException {
         try {
-            configProp.load(in);
-        } catch (IOException e) {
-            e.printStackTrace();
+            InputStream in = new FileInputStream("userID.properties");
+            prop.load(in);
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
     }
-    public void setProperty(String userID, String value){
-        configProp.setProperty(userID, value);
+
+    public void setProperty( String userID, String value){
+        prop.setProperty(userID, value);
     }
 
-    public void flush() throws FileNotFoundException, IOException {
+    public void saveProp() throws FileNotFoundException, IOException {
         try (final OutputStream outputstream
                      = new FileOutputStream("userID.properties");) {
-            configProp.store(outputstream,"File Updated");
+            prop.store(outputstream,"File Updated");
             outputstream.close();
         }
     }

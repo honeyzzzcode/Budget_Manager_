@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
@@ -20,6 +21,11 @@ public class ProfileController extends ViewController implements Initializable {
   public Label createdAtLabel;
   public Label updatedAtLabel;
   public Label budgetLabel;
+  public Label getBudgetLabel() {
+    return budgetLabel;
+  }
+
+
 
   UserService userService = new UserService();
 
@@ -56,7 +62,7 @@ public class ProfileController extends ViewController implements Initializable {
         AppData.getInstance().setLoggedInUserId(null);
         changeScene(actionEvent, "menu");
       } catch (IOException e) {
-        showAlert("Problem with navigation", e.getMessage(), AlertType.ERROR);
+        showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
         e.printStackTrace();
       }
     }

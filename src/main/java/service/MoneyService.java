@@ -9,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class MoneyService {
+    int userID;
     private  Connection connection = DBHandler.getConnection();
     public User getUserProfile(int userId) throws Exception {
+        userID=userId;
         connection = DBHandler.getConnection();
         String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt "
                 + "FROM users WHERE id = ? LIMIT 1";
@@ -36,11 +38,12 @@ public class MoneyService {
     }
     public void addIncome(Money money) throws Exception {
         connection = DBHandler.getConnection();
-        String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
+        String query = "INSERT INTO money(inOrOut, category, amount ,userID ) VALUES(?,?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, money.getInOrOut());
         statement.setString(2, money.getCategory());
         statement.setFloat(3, money.getAmount());
+        statement.setInt(4,userID);
 
 
 
@@ -50,11 +53,12 @@ public class MoneyService {
 
     public void addExpense(Money money) throws Exception {
         connection = DBHandler.getConnection();
-        String query = "INSERT INTO money(inOrOut, category, amount  ) VALUES(?,?,?)";
+        String query = "INSERT INTO money(inOrOut, category, amount ,userID ) VALUES(?,?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, money.getInOrOut());
         statement.setString(2, money.getCategory());
         statement.setFloat(3, money.getAmount());
+        statement.setInt(4,userID);
 
 
 

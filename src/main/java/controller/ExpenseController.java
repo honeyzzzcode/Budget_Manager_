@@ -41,13 +41,13 @@ public class ExpenseController extends ViewController implements Initializable {
                             Category.valueOf(CBCategory.getValue()),
                             Float.parseFloat(amountField.getText()));
 
-            moneyService.addExpense(money);
+
 
 
             int id = Integer.parseInt(p.getString("userID"));
             User user = moneyService.getUserProfile(id);
             user.setBudget(user.getBudget() - Float.parseFloat(amountField.getText()));
-
+            moneyService.addExpense(money);
             moneyService.updateBudget(user, user.getId());
 
 
