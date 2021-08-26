@@ -1,7 +1,20 @@
-drop database if exists BM;
-create database BM;
 
-use BM;
+//vot paroli ot moey bazi , oni ne rabotayut
+
+Username: JEG8yfLAZs
+
+Database name: JEG8yfLAZs
+
+Password: trMJx2LweS
+
+Server: remotemysql.com
+
+Port: 3306
+
+
+
+
+use JEG8yfLAZs;
 
 create table users(
     id int not null auto_increment,

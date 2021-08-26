@@ -12,12 +12,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MenuController extends ViewController  {
-LoginController l = new LoginController();
-    public Label budgetField;
+    ProfileController p = new ProfileController();
+    public Label budgetField ;
 
     public void addIncome(ActionEvent actionEvent) {
+        budgetField.setText(p.budgetLabel.getText());
         try {
-            AppData.getInstance().setLoggedInUserId(null);
+
             changeScene(actionEvent, "income");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
@@ -28,7 +29,7 @@ LoginController l = new LoginController();
 
     public void addExpense(ActionEvent actionEvent) {
         try {
-            AppData.getInstance().setLoggedInUserId(null);
+
             changeScene(actionEvent, "expense");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
@@ -48,7 +49,7 @@ LoginController l = new LoginController();
 
     public void backToPROF(ActionEvent actionEvent) {
         try {
-            AppData.getInstance().setLoggedInUserId(l.userID);
+
             changeScene(actionEvent, "profile");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);

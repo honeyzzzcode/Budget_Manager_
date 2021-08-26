@@ -30,8 +30,8 @@
   <TextField fx:id="emailField" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
 
   <Button text="Login" GridPane.rowIndex="11" onAction="#handleLoadLogin" GridPane.columnIndex="0"
-    style="-fx-font-size: 14px; -fx-text-fill: white; -fx-background-color: #502424"/>
+    style="-fx-font-size: 14px; -fx-text-fill: white; -fx-background-color: pink"/>
   <Button text="Register" GridPane.rowIndex="11" onAction="#handleRegistration" GridPane.columnIndex="1"
-    style="-fx-font-size: 14px; -fx-text-fill: white; -fx-background-color: purple"/>
+    style="-fx-font-size: 14px; -fx-text-fill: white; -fx-background-color: pink"/>
 
 </GridPane>

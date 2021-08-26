@@ -19,7 +19,12 @@ public class LoginController extends ViewController {
 
   public Label notificationLabel;
   public TextField usernameField;
-public Integer userID;
+  public Integer userID;
+  public Integer getUserID() {
+    return userID;
+  }
+
+
   @FXML
   PasswordField passwordField;
   UserService userService = new UserService();

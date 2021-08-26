@@ -33,7 +33,8 @@ public class DBHandler {
 
     pass = databaseProperties.getString("database.password");
     user = databaseProperties.getString("database.user");
-    connectionUrl = host + ":" + port + "/" + dbName + "?serverTimezone=GMT%2B3";
+    connectionUrl = host + ":" + port + "/" + dbName ;
+           // "?serverTimezone=GMT%2B3";
   }
 
   public static Connection getConnection() {

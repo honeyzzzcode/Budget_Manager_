@@ -24,6 +24,7 @@ public class ExpenseController extends ViewController implements Initializable {
     @FXML
     private ChoiceBox<String> CBCategory;
     MoneyService moneyService = new MoneyService();
+
     public TextField amountField;
     public TextField categoryField;
 

@@ -42,6 +42,7 @@ public class ProfileController extends ViewController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     try {
+
       User user = this.userService.getUserProfile(AppData.getInstance().getLoggedInUserId());
       nameLabel.setText(user.getName());
       userNameLabel.setText(user.getUserName());
@@ -59,7 +60,6 @@ public class ProfileController extends ViewController implements Initializable {
 
     public void showMenu(ActionEvent actionEvent) {
       try {
-        AppData.getInstance().setLoggedInUserId(null);
         changeScene(actionEvent, "menu");
       } catch (IOException e) {
         showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
