@@ -14,9 +14,8 @@ import java.util.ResourceBundle;
 public class MenuController extends ViewController  {
     ProfileController p = new ProfileController();
     public Label budgetField ;
-
     public void addIncome(ActionEvent actionEvent) {
-        budgetField.setText(p.budgetLabel.getText());
+
         try {
 
             changeScene(actionEvent, "income");

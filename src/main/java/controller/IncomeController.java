@@ -42,8 +42,6 @@ public class IncomeController extends ViewController implements Initializable {
                             Float.parseFloat(amountField.getText()));
 
 
-
-
             int id = Integer.parseInt(p.getString("userID"));
             User user = moneyService.getUserProfile(id);
             user.setBudget(user.getBudget() + Float.parseFloat(amountField.getText()));

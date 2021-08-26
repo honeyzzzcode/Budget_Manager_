@@ -1,5 +1,5 @@
 
-//vot paroli ot moey bazi , oni ne rabotayut
+
 
 Username: JEG8yfLAZs
 
@@ -11,10 +11,10 @@ Server: remotemysql.com
 
 Port: 3306
 
-
-
-
 use JEG8yfLAZs;
+drop database if exists BM;
+create database BM;
+use BM;
 
 create table users(
     id int not null auto_increment,

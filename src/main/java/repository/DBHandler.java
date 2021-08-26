@@ -10,6 +10,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class DBHandler {
 
+
   private static String pass;
   private static String user;
   private static String connectionUrl;
@@ -33,8 +34,7 @@ public class DBHandler {
 
     pass = databaseProperties.getString("database.password");
     user = databaseProperties.getString("database.user");
-    connectionUrl = host + ":" + port + "/" + dbName ;
-           // "?serverTimezone=GMT%2B3";
+    connectionUrl = host + ":" + port + "/" + dbName + "?serverTimezone=GMT%2B3";
   }
 
   public static Connection getConnection() {
