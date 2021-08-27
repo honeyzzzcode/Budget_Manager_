@@ -9,5 +9,7 @@ public enum  Category {
     CAR,
     GIFTS,
     GOALS,
+    CASH,
+    CREDIT_CARD
 
 }
