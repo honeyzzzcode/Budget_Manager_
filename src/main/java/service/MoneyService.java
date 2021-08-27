@@ -83,26 +83,24 @@ public class MoneyService {
     public User getAllCategory(int userId) throws Exception {
         userID=userId;
         connection = DBHandler.getConnection();
-        String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt "
-                + "FROM users WHERE userid = ? ";
+        String query = "SELECT id, inOrOut, category, amount, userID, createdAt, updatedAt "
+                + "FROM users WHERE userID = ? ";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
 
         ResultSet result = statement.executeQuery();
 
-        User user = null;
+        Money money = null;
         if (result.next()) {
-            user = new User(
-                    result.getInt("id"), result.getString("name"), result.getString("userName"),
-                    result.getString("phone"), result.getString("email"),result.getFloat("budget"),
+            money = new Money(
+                    result.getInt("id"), result.getString("inOrOut"), result.getString("category"),
+                    result.getFloat("amount"), result.getInt("UserID"),
                     result.getTimestamp("createdAt"), result.getTimestamp("updatedAt")
             );
         }
         DBHandler.close(result, statement, connection);
 
-        if (user == null || userId == 0) throw new Exception("Username and password not correct");
-
-        return user;
+        return money;
     }
 }
