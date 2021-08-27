@@ -28,7 +28,21 @@ public class Money {
         return amount;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
 
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+
+    public Money(InOrOut inOrOut, Category category, float amount, int UserId, Timestamp createdAt, Timestamp updatedAt) {
+        this.inOrOut = inOrOut;
+        this.category = category;
+        this.amount = amount;
+
+    }
     public Money(InOrOut inOrOut, Category category, float amount, int UserId, Timestamp createdAt, Timestamp updatedAt) {
         this.inOrOut = inOrOut;
         this.category = category;
