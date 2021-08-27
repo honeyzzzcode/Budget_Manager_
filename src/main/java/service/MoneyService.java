@@ -1,5 +1,6 @@
 package service;
 
+import Types.Category;
 import model.Money;
 import model.User;
 import repository.DBHandler;
@@ -7,6 +8,7 @@ import repository.DBHandler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class MoneyService {
     int userID;
@@ -77,4 +79,21 @@ public class MoneyService {
         DBHandler.close(statement, connection);
 
     }
+
+    public ArrayList<Category> getAllCategory() throws Exception{
+        connection = DBHandler.getConnection();
+
+        ArrayList<Category> categories = new ArrayList<>();
+        String query = "SELECT id, inOrOut, category, amount, userID";
+        PreparedStatement statement = connection.prepareStatement(query);
+
+        ResultSet result = statement.executeQuery();
+        while (result.next()) {
+            categories.add(new Category(
+                    result.getInt("id"), result.getString("inOrOut"), result.getString("category"),
+                    result.getFloat("amount"), result.getInt("userID")));
+    }
+        DBHandler.close(result, statement, connection);
+        return categories;
+}
 }
