@@ -9,6 +9,7 @@ public class Money {
     Category category;
     float amount;
     InOrOut inOrOut;
+    int userId;
 
     public String getInOrOut() {
         return String.valueOf(inOrOut);
@@ -27,5 +28,6 @@ public class Money {
         this.inOrOut = inOrOut;
         this.category = category;
         this.amount = amount;
+        this.userId = userId;
     }
 }

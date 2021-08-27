@@ -80,20 +80,29 @@ public class MoneyService {
 
     }
 
-    public ArrayList<Category> getAllCategory() throws Exception{
+    public User getAllCategory(int userId) throws Exception {
+        userID=userId;
         connection = DBHandler.getConnection();
-
-        ArrayList<Category> categories = new ArrayList<>();
-        String query = "SELECT id, inOrOut, category, amount, userID";
-        PreparedStatement statement = connection.prepareStatement(query);
+        String query = "SELECT id, name, userName, email, phone, budget, createdAt, updatedAt "
+                + "FROM users WHERE userid = ? ";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
 
         ResultSet result = statement.executeQuery();
-        while (result.next()) {
-            categories.add(new Category(
-                    result.getInt("id"), result.getString("inOrOut"), result.getString("category"),
-                    result.getFloat("amount"), result.getInt("userID")));
-    }
+
+        User user = null;
+        if (result.next()) {
+            user = new User(
+                    result.getInt("id"), result.getString("name"), result.getString("userName"),
+                    result.getString("phone"), result.getString("email"),result.getFloat("budget"),
+                    result.getTimestamp("createdAt"), result.getTimestamp("updatedAt")
+            );
+        }
         DBHandler.close(result, statement, connection);
-        return categories;
-}
+
+        if (user == null || userId == 0) throw new Exception("Username and password not correct");
+
+        return user;
+    }
 }
