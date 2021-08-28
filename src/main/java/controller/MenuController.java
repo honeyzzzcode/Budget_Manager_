@@ -5,15 +5,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import model.AppData;
+import model.User;
 import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuController extends ViewController  {
+public class MenuController extends ViewController  implements Initializable {
     ProfileController p = new ProfileController();
     public Label budgetField ;
+
     public void addIncome(ActionEvent actionEvent) {
 
         try {
@@ -54,5 +56,21 @@ public class MenuController extends ViewController  {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();
         }
+    }
+
+    public void showSimpleReport(ActionEvent actionEvent) {
+        try {
+
+            changeScene(actionEvent, "simpleReport");
+        } catch (IOException e) {
+            showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        budgetField.setText(AppData.getInstance().getBudget() +"€");
     }
 }

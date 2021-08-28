@@ -12,9 +12,6 @@ Server: remotemysql.com
 Port: 3306
 
 use JEG8yfLAZs;
-drop database if exists BM;
-create database BM;
-use BM;
 
 create table users(
     id int not null auto_increment,
@@ -34,5 +31,7 @@ inOrOut varchar(100) not null,
 category varchar(100) not null,
 amount float not null,
 userID int not null,
+createdAt timestamp default current_timestamp,
+ updatedAt timestamp default current_timestamp on update current_timestamp,
 primary key(id)
 )

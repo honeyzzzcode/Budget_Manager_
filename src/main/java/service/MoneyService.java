@@ -80,27 +80,28 @@ public class MoneyService {
 
     }
 
-    public User getAllCategory(int userId) throws Exception {
+    public ArrayList<Money> getAllMoneyRecords(int userId) throws Exception {
         userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT id, inOrOut, category, amount, userID, createdAt, updatedAt "
-                + "FROM users WHERE userID = ? ";
+        String query = "SELECT * "
+                + "FROM money WHERE userID = ? ";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
 
         ResultSet result = statement.executeQuery();
 
-        Money money = null;
+
         if (result.next()) {
-            money = new Money(
+            moneyRecords.add(new Money(
                     result.getInt("id"), result.getString("inOrOut"), result.getString("category"),
-                    result.getFloat("amount"), result.getInt("UserID"),
+                    result.getFloat("amount"), result.getInt("userID"),
                     result.getTimestamp("createdAt"), result.getTimestamp("updatedAt")
-            );
+            ));
         }
         DBHandler.close(result, statement, connection);
-
-        return money;
+        System.out.println(moneyRecords.size());
+        return moneyRecords;
     }
 }

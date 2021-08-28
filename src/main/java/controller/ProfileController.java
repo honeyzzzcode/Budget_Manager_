@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -21,10 +22,7 @@ public class ProfileController extends ViewController implements Initializable {
   public Label createdAtLabel;
   public Label updatedAtLabel;
   public Label budgetLabel;
-  public Label getBudgetLabel() {
-    return budgetLabel;
-  }
-
+  DecimalFormat df = new DecimalFormat("#.##");
 
 
   UserService userService = new UserService();
@@ -39,6 +37,10 @@ public class ProfileController extends ViewController implements Initializable {
     }
   }
 
+  public Label getBudgetLabel() {
+    return budgetLabel;
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     try {
@@ -48,7 +50,8 @@ public class ProfileController extends ViewController implements Initializable {
       userNameLabel.setText(user.getUserName());
       phoneNumberLabel.setText(String.valueOf(user.getPhone()));
       emailAddressLabel.setText(user.getEmail());
-      budgetLabel.setText(String.valueOf(user.getBudget()));
+      budgetLabel.setText((df.format(user.getBudget())));
+      AppData.getInstance().setBudget(df.format(user.getBudget()));
       createdAtLabel.setText(String.valueOf(user.getCreatedAt()));
       updatedAtLabel.setText(String.valueOf(user.getUpdatedAt()));
     } catch (Exception e) {
@@ -60,6 +63,7 @@ public class ProfileController extends ViewController implements Initializable {
 
     public void showMenu(ActionEvent actionEvent) {
       try {
+
         changeScene(actionEvent, "menu");
       } catch (IOException e) {
         showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
