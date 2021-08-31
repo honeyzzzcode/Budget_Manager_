@@ -61,6 +61,6 @@ public class IncomeController extends ViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CBCategory.getItems().add(String.valueOf(Category.CASH));
-        CBCategory.getItems().add(String.valueOf(Category.CREDIT_CARD));
+        CBCategory.getItems().add(String.valueOf(Category.BANK));
             }
 }

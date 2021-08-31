@@ -11,7 +11,7 @@
     <Label text="Enter Amount" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
     <TextField fx:id="amountField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
 
-    <Label text="Chooose Category" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+    <Label text="Choose Category" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
 
     <Button text="PRESS TO ADD" GridPane.rowIndex="11" onAction="#addIncome" GridPane.columnIndex="1"
             style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: pink"/>

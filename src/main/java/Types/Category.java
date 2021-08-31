@@ -10,6 +10,6 @@ public enum  Category {
     GIFTS,
     GOALS,
     CASH,
-    CREDIT_CARD
+    BANK
 
 }

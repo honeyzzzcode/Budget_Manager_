@@ -27,9 +27,14 @@ public class MoneyService {
         User user = null;
         if (result.next()) {
             user = new User(
-                    result.getInt("id"), result.getString("name"), result.getString("userName"),
-                    result.getString("phone"), result.getString("email"),result.getFloat("budget"),
-                    result.getTimestamp("createdAt"), result.getTimestamp("updatedAt")
+                    result.getInt("id"),
+                    result.getString("name"),
+                    result.getString("userName"),
+                    result.getString("phone"),
+                    result.getString("email"),
+                    result.getFloat("budget"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
             );
         }
         DBHandler.close(result, statement, connection);
@@ -47,8 +52,6 @@ public class MoneyService {
         statement.setFloat(3, money.getAmount());
         statement.setInt(4,userID);
 
-
-
         statement.executeUpdate();
         DBHandler.close(statement, connection);
     }
@@ -61,8 +64,6 @@ public class MoneyService {
         statement.setString(2, money.getCategory());
         statement.setFloat(3, money.getAmount());
         statement.setInt(4,userID);
-
-
 
         statement.executeUpdate();
         DBHandler.close(statement, connection);
@@ -84,8 +85,35 @@ public class MoneyService {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT * "
-                + "FROM money WHERE userID = ? ";
+        String query = "SELECT * " + "FROM money WHERE userID = ? " + "ORDER BY inOrOut";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
+
+        ResultSet result = statement.executeQuery();
+
+        while (result.next()) {
+            moneyRecords.add(new Money(
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
+            ));
+        }
+        DBHandler.close(result, statement, connection);
+        System.out.println(moneyRecords.size());
+        return moneyRecords;
+    }
+
+    //еще не закончила
+    public ArrayList<Money> getCategoryRecord(int userId) throws Exception {
+        userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
+        connection = DBHandler.getConnection();
+        String query = "SELECT * " + "FROM money WHERE userID = ? , category = ?";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
@@ -93,11 +121,44 @@ public class MoneyService {
         ResultSet result = statement.executeQuery();
 
 
-        if (result.next()) {
+        while (result.next()) {
             moneyRecords.add(new Money(
-                    result.getInt("id"), result.getString("inOrOut"), result.getString("category"),
-                    result.getFloat("amount"), result.getInt("userID"),
-                    result.getTimestamp("createdAt"), result.getTimestamp("updatedAt")
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
+            ));
+        }
+        DBHandler.close(result, statement, connection);
+        System.out.println(moneyRecords.size());
+        return moneyRecords;
+    }
+
+    //показыват сумму по доходам и расходам в одной таблице
+    public ArrayList<Money> getTotalReport(int userId) throws Exception {
+        userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
+        connection = DBHandler.getConnection();
+        String query = "SELECT inOrOut, sum (amount) " + "FROM money WHERE userID = ? GROUP BY inOrOut";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
+
+        ResultSet result = statement.executeQuery();
+
+
+        while (result.next()) {
+            moneyRecords.add(new Money(
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
             ));
         }
         DBHandler.close(result, statement, connection);

@@ -6,10 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
@@ -23,6 +27,7 @@ public class  ReportController extends ViewController implements Initializable {
 
 
     public ListView<String> tableView;
+   // public TableView<String> tableView;
 
 
     public void showMenu(ActionEvent actionEvent) {
@@ -38,22 +43,20 @@ public class  ReportController extends ViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-          //этот вариант выдает только одну запись с базы данных
-            //в moneyservice надо чтото изменить в  getAllMoneyRecords чтобы он выдавал все а не только одну
-            // / я не знаю как это сделать
             ObservableList<String> recList = FXCollections.observableArrayList();
 
             ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
-                recList.add(money.getAmount() + "  " + money.getCategory()+"  " + money.getInOrOut()  );
+                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );
+
 
            }
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
 
 
 
