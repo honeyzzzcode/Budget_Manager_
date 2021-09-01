@@ -142,7 +142,7 @@ public class MoneyService {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT inOrOut, sum (amount) " + "FROM money WHERE userID = ? GROUP BY inOrOut";
+        String query = "SELECT inOrOut, sum(amount) " + "FROM money WHERE userID = ? GROUP BY inOrOut";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
@@ -152,13 +152,8 @@ public class MoneyService {
 
         while (result.next()) {
             moneyRecords.add(new Money(
-                    result.getInt("id"),
-                    result.getString("inOrOut"),
-                    result.getString("category"),
-                    result.getFloat("amount"),
-                    result.getInt("userID"),
-                    result.getTimestamp("createdAt"),
-                    result.getTimestamp("updatedAt")
+                         result.getString("inOrOut"),
+                         result.getFloat("total")
             ));
         }
         DBHandler.close(result, statement, connection);

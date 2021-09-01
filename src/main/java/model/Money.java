@@ -14,8 +14,13 @@ int ID;
     int userId;
     Timestamp createdAt;
     Timestamp updatedAt;
+    Float total;
 
-     
+    public Money(String inOrOut, Float total) {
+        this.inOrOut = inOrOut;
+        this.total = total;
+    }
+
     public String getInOrOut() {
         return String.valueOf(inOrOut);
     }
