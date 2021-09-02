@@ -153,11 +153,10 @@ public class MoneyService {
         while (result.next()) {
             moneyRecords.add(new Money(
                          result.getString("inOrOut"),
-                         result.getFloat("total")
+                         result.getFloat("sum(amount)")
             ));
         }
         DBHandler.close(result, statement, connection);
-        System.out.println(moneyRecords.size());
-        return moneyRecords;
+       return moneyRecords;
     }
 }

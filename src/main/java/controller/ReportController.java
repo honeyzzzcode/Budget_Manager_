@@ -48,10 +48,8 @@ public class  ReportController extends ViewController implements Initializable {
             ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
-                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );
+                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
 
-
-           }
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();

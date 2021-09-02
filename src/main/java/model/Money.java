@@ -17,8 +17,12 @@ int ID;
     Float total;
 
     public Money(String inOrOut, Float total) {
-        this.inOrOut = inOrOut;
+        this.inOrOut = InOrOut.valueOf(inOrOut);
         this.total = total;
+    }
+
+    public Float getTotal() {
+        return total;
     }
 
     public String getInOrOut() {
