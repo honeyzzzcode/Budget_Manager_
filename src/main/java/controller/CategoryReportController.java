@@ -42,18 +42,7 @@ public class  CategoryReportController extends ViewController implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-      /*  try {
-            ObservableList<String> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId());
-
-            for (Money money : moneyRecords) {
-                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
-
-            tableView.setItems(recList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
 
 
         CBCategory.getItems().add(String.valueOf(Category.CAR));
@@ -64,6 +53,20 @@ public class  CategoryReportController extends ViewController implements Initial
         CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
         CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
         CBCategory.getItems().add(String.valueOf(Category.GOALS));
+
+        try {
+            ObservableList<String> recList = FXCollections.observableArrayList();
+
+            ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(),CBCategory.getValue());
+
+            for (Money money : moneyRecords) {
+                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
+
+            tableView.setItems(recList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         }
 
 

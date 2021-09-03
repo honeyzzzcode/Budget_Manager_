@@ -45,7 +45,7 @@ public class  ReportController extends ViewController implements Initializable {
         try {
             ObservableList<String> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+            ArrayList<Money>  moneyRecords = this.service.getTotalReport(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
                 recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}

@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 public class Money {
 
-int ID;
+    int ID;
     Category category;
     float amount;
     InOrOut inOrOut;
@@ -52,6 +52,7 @@ int ID;
         this.amount = amount;
 
     }
+
     public Money(int ID,String inOrOut, String category, float amount, int UserId, Timestamp createdAt, Timestamp updatedAt) {
        this.ID = ID;
         this.inOrOut = InOrOut.valueOf(inOrOut);
@@ -61,4 +62,5 @@ int ID;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
 }

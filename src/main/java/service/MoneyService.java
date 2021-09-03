@@ -123,17 +123,13 @@ public class MoneyService {
 
         while (result.next()) {
             moneyRecords.add(new Money(
-                    result.getInt("id"),
-                    result.getString("inOrOut"),
-                    result.getString("category"),
-                    result.getFloat("amount"),
-                    result.getInt("userID"),
-                    result.getTimestamp("createdAt"),
-                    result.getTimestamp("updatedAt")
+                    result.getFloat(""),
+                    result.getString("inOrOut")
+
             ));
         }
         DBHandler.close(result, statement, connection);
-        System.out.println(moneyRecords.size());
+        System.out.println();
         return moneyRecords;
     }
 
