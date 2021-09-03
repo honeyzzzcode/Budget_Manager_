@@ -12,7 +12,7 @@
     <Label text="Enter Amount" GridPane.columnIndex="0" GridPane.rowIndex="7" />
     <TextField fx:id="amountField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 
-    <Label text="Chooose Category" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+    <Label text="Choose Category" GridPane.columnIndex="0" GridPane.rowIndex="9" />
 
     <ChoiceBox fx:id="CBCategory" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
     

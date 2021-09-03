@@ -83,4 +83,14 @@ public class MenuController extends ViewController  implements Initializable {
 
         budgetField.setText(AppData.getInstance().getBudget() +"€");
     }
+
+    public void categoryReport(ActionEvent actionEvent) {
+        try {
+
+            changeScene(actionEvent, "categoryReport");
+        } catch (IOException e) {
+            showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
 }

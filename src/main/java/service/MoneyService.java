@@ -109,7 +109,7 @@ public class MoneyService {
     }
 
     //еще не закончила
-    public ArrayList<Money> getCategoryRecord(int userId) throws Exception {
+    public ArrayList<Money> getCategoryRecord(int userId, String category) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
