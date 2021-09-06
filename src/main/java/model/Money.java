@@ -4,8 +4,13 @@ import Types.Category;
 import Types.InOrOut;
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 
 public class Money {
+    DecimalFormat df = new DecimalFormat("#.##");
+    String formatted = df.format(2.456345);
+
+
 
     int ID;
     Category category;

@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import model.AppData;
 import model.User;
+import service.MoneyService;
 import service.UserService;
 
 public class ProfileController extends ViewController implements Initializable {
@@ -22,7 +23,6 @@ public class ProfileController extends ViewController implements Initializable {
   public Label createdAtLabel;
   public Label updatedAtLabel;
   public Label budgetLabel;
-  DecimalFormat df = new DecimalFormat("#.##");
 
 
   UserService userService = new UserService();
@@ -50,8 +50,11 @@ public class ProfileController extends ViewController implements Initializable {
       userNameLabel.setText(user.getUserName());
       phoneNumberLabel.setText(String.valueOf(user.getPhone()));
       emailAddressLabel.setText(user.getEmail());
-      budgetLabel.setText((df.format(user.getBudget())));
-      AppData.getInstance().setBudget(df.format(user.getBudget()));
+      MoneyService moneyService = new MoneyService();
+      String str = String.format("%.02f",  moneyService.getMoney(AppData.getInstance().getLoggedInUserId()));
+      budgetLabel.setText(str+"€");
+
+
       createdAtLabel.setText(String.valueOf(user.getCreatedAt()));
       updatedAtLabel.setText(String.valueOf(user.getUpdatedAt()));
     } catch (Exception e) {

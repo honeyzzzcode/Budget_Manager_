@@ -6,10 +6,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import model.AppData;
 import model.User;
+import service.MoneyService;
 import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class MenuController extends ViewController  implements Initializable {
@@ -80,8 +82,14 @@ public class MenuController extends ViewController  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        MoneyService moneyService = new MoneyService();
 
-        budgetField.setText(AppData.getInstance().getBudget() +"€");
+        try {
+            String str = String.format("%.02f",  moneyService.getMoney(AppData.getInstance().getLoggedInUserId()));
+            budgetField.setText(str+"€");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void categoryReport(ActionEvent actionEvent) {

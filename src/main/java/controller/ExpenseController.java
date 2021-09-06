@@ -41,10 +41,6 @@ public class ExpenseController extends ViewController implements Initializable {
                     (InOrOut.EXPENSE,
                             Category.valueOf(CBCategory.getValue()),
                             Float.parseFloat(amountField.getText()));
-
-
-
-
             int id = Integer.parseInt(p.getString("userID"));
             User user = moneyService.getUserProfile(id);
             user.setBudget(user.getBudget() - Float.parseFloat(amountField.getText()));

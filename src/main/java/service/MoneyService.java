@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class MoneyService {
+
     int userID;
     private  Connection connection = DBHandler.getConnection();
     public User getUserProfile(int userId) throws Exception {
@@ -156,4 +157,24 @@ public class MoneyService {
         DBHandler.close(result, statement, connection);
        return moneyRecords;
     }
+    public Float  getMoney(int userId) throws Exception {
+        userID=userId;
+        connection = DBHandler.getConnection();
+        String query = "SELECT  budget "
+                + "FROM users WHERE id = ? LIMIT 1";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
+
+        ResultSet result = statement.executeQuery();
+
+        Float budget = null;
+        while (result.next()) {
+              budget= result.getFloat("budget");
+
+        }
+        DBHandler.close(result, statement, connection);
+        return budget;
+    }
+
 }
