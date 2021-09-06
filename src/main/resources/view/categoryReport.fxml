@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
@@ -12,8 +13,12 @@
 
         <ChoiceBox fx:id="CBCategory" layoutX="75.0" layoutY="127.0" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
-        <Button layoutX="86.0" layoutY="82.0" onAction="#showMenu1" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: pink" text="CHOOSE CATGORY" />
+        <Button layoutX="86.0" layoutY="81.0" onAction="#showMenu1" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: pink" text="CHOOSE CATGORY" />
        
+        <Button layoutX="313.0" layoutY="31.0" onAction="#showMenu" style="-fx-font-size: 30px; -fx-text-fill: black; -fx-background-color: pink;" text="MENU" AnchorPane.rightAnchor="161.66666666666669" />
+      <ListView fx:id="tableView" layoutX="75.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" />
+
+
     </children>
 
 </AnchorPane>
