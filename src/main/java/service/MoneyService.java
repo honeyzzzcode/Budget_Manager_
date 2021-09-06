@@ -113,17 +113,18 @@ public class MoneyService {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT * " + "FROM money WHERE userID = ? , category = ?";
+        String query = "SELECT * " + "FROM money WHERE userID = ? AND category = ?";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
+        statement.setString(2, category);
 
         ResultSet result = statement.executeQuery();
 
 
         while (result.next()) {
             moneyRecords.add(new Money(
-                    result.getFloat(""),
+                    result.getFloat("amount"),
                     result.getString("inOrOut")
 
             ));

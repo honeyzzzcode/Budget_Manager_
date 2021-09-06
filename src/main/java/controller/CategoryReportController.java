@@ -54,21 +54,21 @@ public class  CategoryReportController extends ViewController implements Initial
         CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
         CBCategory.getItems().add(String.valueOf(Category.GOALS));
 
-        try {
-            ObservableList<String> recList = FXCollections.observableArrayList();
-
-            ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(),CBCategory.getValue());
-
-            for (Money money : moneyRecords) {
-                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
-
-            tableView.setItems(recList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         }
+    public void showMenu1(){
 
+        try{
+        ObservableList<String> recList = FXCollections.observableArrayList();
 
+        ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(), CBCategory.getValue());
+
+        for (Money money : moneyRecords) {
+            recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
+
+        tableView.setItems(recList);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }}
     }
 

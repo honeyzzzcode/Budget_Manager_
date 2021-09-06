@@ -21,6 +21,11 @@ public class Money {
         this.total = total;
     }
 
+    public Money(float amount, String inOrOut) {
+        this.amount = amount;
+        this.inOrOut = InOrOut.valueOf(inOrOut);
+    }
+
     public Float getTotal() {
         return total;
     }
