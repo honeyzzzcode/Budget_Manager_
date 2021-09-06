@@ -93,4 +93,14 @@ public class MenuController extends ViewController  implements Initializable {
             e.printStackTrace();
         }
     }
+    public void reportByDate(ActionEvent actionEvent) {
+        try {
+
+            changeScene(actionEvent, "reportByDate");
+        } catch (IOException e) {
+            showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
 }
