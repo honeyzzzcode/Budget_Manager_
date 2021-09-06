@@ -64,7 +64,7 @@ public class  CategoryReportController extends ViewController implements Initial
         ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(), CBCategory.getValue());
 
         for (Money money : moneyRecords) {
-            recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
+            recList.add(money.getInOrOut() + "   " + money.getAmount() );}
 
         tableView.setItems(recList);
     } catch (Exception e) {
