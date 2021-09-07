@@ -104,7 +104,7 @@ public class MenuController extends ViewController  implements Initializable {
     public void reportByDate(ActionEvent actionEvent) {
         try {
 
-            changeScene(actionEvent, "reportByDate");
+            changeScene(actionEvent, "reportbydate");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();

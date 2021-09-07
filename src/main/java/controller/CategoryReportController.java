@@ -26,12 +26,10 @@ public class  CategoryReportController extends ViewController implements Initial
     @FXML
     private ChoiceBox<String> CBCategory;
 
-
     public ListView<String> tableView;
 
     public void showMenu(ActionEvent actionEvent) {
         try {
-
             changeScene(actionEvent, "menu");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
@@ -39,11 +37,9 @@ public class  CategoryReportController extends ViewController implements Initial
         }
     }
     MoneyService service = new MoneyService();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
-
 
         CBCategory.getItems().add(String.valueOf(Category.CAR));
         CBCategory.getItems().add(String.valueOf(Category.EATING_OUT));
@@ -53,11 +49,8 @@ public class  CategoryReportController extends ViewController implements Initial
         CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
         CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
         CBCategory.getItems().add(String.valueOf(Category.GOALS));
-
-
         }
     public void showMenu1(){
-
         try{
         ObservableList<String> recList = FXCollections.observableArrayList();
 

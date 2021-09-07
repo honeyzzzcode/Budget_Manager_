@@ -1,5 +1,5 @@
 package controller;
-
+import javafx.scene.control.DatePicker;
 import Types.Category;
 import Types.InOrOut;
 import javafx.collections.FXCollections;
@@ -16,7 +16,6 @@ import javafx.util.StringConverter;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,13 +25,15 @@ import java.util.ResourceBundle;
 
 public class  ReportByDateController extends ViewController implements Initializable {
 
-        @FXML
-        private DatePicker myDatePicker;
+    @FXML
+    private DatePicker startDate;
+   /* @FXML
+    private DatePicker endDate;*/
 
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-            myDatePicker.setConverter(
+            startDate.setConverter(
                     new StringConverter<LocalDate>() {
                         final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -48,13 +49,27 @@ public class  ReportByDateController extends ViewController implements Initializ
                                     : null;
                         }
                     });
-
-        }
-
-
+           }
     public ListView<String> tableView;
+    MoneyService service = new MoneyService();
 
-  /*  public void showMenu(ActionEvent actionEvent) {
+
+    public void showMenu1(){
+
+        try{
+            ObservableList<String> recList = FXCollections.observableArrayList();
+
+            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue());
+
+            for (Money money : moneyRecords) {
+                recList.add(money.getCreatedAt() + "   "  + money.getCategory() + "   " + money.getAmount() + "   " + money.getInOrOut());}
+
+            tableView.setItems(recList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }}
+
+    public void showMenu(ActionEvent actionEvent) {
         try {
 
             changeScene(actionEvent, "menu");
@@ -63,27 +78,5 @@ public class  ReportByDateController extends ViewController implements Initializ
             e.printStackTrace();
         }
     }
-    MoneyService service = new MoneyService();
-    @Override
-    /*public void initialize(URL location, ResourceBundle resources) {
-
-
-
-
-    }
-    public void showMenu1(){
-
-        try{
-            ObservableList<String> recList = FXCollections.observableArrayList();
-
-            ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(), DatePicker.getValue());
-
-            for (Money money : moneyRecords) {
-                recList.add(money.getInOrOut() + "   " + money.getAmount() );}
-
-            tableView.setItems(recList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }}*/
 }
 

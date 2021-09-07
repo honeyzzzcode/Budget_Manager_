@@ -5,15 +5,15 @@ import model.Money;
 import model.User;
 import repository.DBHandler;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MoneyService {
 
     int userID;
     private  Connection connection = DBHandler.getConnection();
+
     public User getUserProfile(int userId) throws Exception {
         userID=userId;
         connection = DBHandler.getConnection();
@@ -44,6 +44,7 @@ public class MoneyService {
 
         return user;
     }
+
     public void addIncome(Money money) throws Exception {
         connection = DBHandler.getConnection();
         String query = "INSERT INTO money(inOrOut, category, amount ,userID ) VALUES(?,?,?,?)";
@@ -109,7 +110,6 @@ public class MoneyService {
         return moneyRecords;
     }
 
-    //еще не закончила
     public ArrayList<Money> getCategoryRecord(int userId, String category) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
@@ -135,7 +135,6 @@ public class MoneyService {
         return moneyRecords;
     }
 
-    //показыват сумму по доходам и расходам в одной таблице
     public ArrayList<Money> getTotalReport(int userId) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
@@ -157,6 +156,7 @@ public class MoneyService {
         DBHandler.close(result, statement, connection);
        return moneyRecords;
     }
+
     public Float  getMoney(int userId) throws Exception {
         userID=userId;
         connection = DBHandler.getConnection();
@@ -177,4 +177,30 @@ public class MoneyService {
         return budget;
     }
 
-}
+    public ArrayList<Money> getReportByDate(int userId, LocalDate createdAt) throws Exception {
+        userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
+        connection = DBHandler.getConnection();
+        String query = "SELECT * " + "FROM money WHERE userID = ? AND createdAt = ?";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
+        statement.setDate(2, Date.valueOf(createdAt));
+
+        ResultSet result = statement.executeQuery();
+
+        while (result.next()) {
+            moneyRecords.add(new Money(
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
+            ));
+        }
+        DBHandler.close(result, statement, connection);
+        System.out.println();
+        return moneyRecords;
+}}
