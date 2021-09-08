@@ -87,7 +87,7 @@ public class MoneyService {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT * " + "FROM money WHERE userID = ? " + "ORDER BY inOrOut";
+        String query = "SELECT * " + "FROM money WHERE userID = ? ";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);

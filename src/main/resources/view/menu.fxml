@@ -14,10 +14,10 @@
     <Button alignment="CENTER" contentDisplay="CENTER" onAction="#addExpense" prefHeight="80.0" prefWidth="362.0" style="-fx-font-size: 40px; -fx-border-color: lightsteelblue; -fx-text-fill: black; -fx-background-color: pink;" text="ADD EXPENSE" textAlignment="CENTER" GridPane.rowIndex="9" />
     <Button contentDisplay="CENTER" onAction="#handleLogout" prefHeight="48.0" prefWidth="145.0" style="-fx-background-color: red; -fx-text-fill: white;     -fx-font-size: 25px" text="LOGOUT" GridPane.rowIndex="15" />
     <Button alignment="CENTER" contentDisplay="CENTER" onAction="#backToPROF" prefHeight="50.0" prefWidth="274.0" style="-fx-background-color: red; -fx-text-fill: white;     -fx-font-size: 25px" text="BACK TO PROFILE" textAlignment="CENTER" GridPane.rowIndex="12" />
-   <Button layoutX="10.0" layoutY="118.0" onAction="#showSimpleReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text=" MONTH REPORT" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+   <Button layoutX="10.0" layoutY="118.0" onAction="#showSimpleReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text=" SIMPLE REPORT" GridPane.columnIndex="2" GridPane.rowIndex="5" />
    <Button layoutX="375.0" layoutY="118.0" onAction="#showReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text=" SUMMARY REPORT" GridPane.columnIndex="2" GridPane.rowIndex="9" />
    <Button layoutX="375.0" layoutY="237.0" onAction="#categoryReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text="CATEGORY REPORT" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-   <Button layoutX="375.0" layoutY="237.0" onAction="#reportByDate" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text="YEAR REPORT" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+   <Button layoutX="375.0" layoutY="237.0" onAction="#reportByDate" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: pink; -fx-text-fill: black; -fx-font-size: 30px;" text="DATE REPORT" GridPane.columnIndex="2" GridPane.rowIndex="12" />
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
