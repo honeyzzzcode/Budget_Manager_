@@ -27,28 +27,44 @@ public class  ReportByDateController extends ViewController implements Initializ
 
     @FXML
     private DatePicker startDate;
-   /* @FXML
-    private DatePicker endDate;*/
+   @FXML
+    private DatePicker endDate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-            startDate.setConverter(
-                    new StringConverter<LocalDate>() {
-                        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        startDate.setConverter(
+                new StringConverter<LocalDate>() {
+                    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-                        @Override
-                        public String toString(LocalDate date) {
-                            return (date != null) ? dateFormatter.format(date) : "";
-                        }
+                    @Override
+                    public String toString(LocalDate date) {
+                        return (date != null) ? dateFormatter.format(date) : "";
+                    }
 
-                        @Override
-                        public LocalDate fromString(String string) {
-                            return (string != null && !string.isEmpty())
-                                    ? LocalDate.parse(string, dateFormatter)
-                                    : null;
-                        }
-                    });
+                    @Override
+                    public LocalDate fromString(String string) {
+                        return (string != null && !string.isEmpty())
+                                ? LocalDate.parse(string, dateFormatter)
+                                : null;
+                    }
+                });
+        endDate.setConverter(
+                new StringConverter<LocalDate>() {
+                    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                    @Override
+                    public String toString(LocalDate date) {
+                        return (date != null) ? dateFormatter.format(date) : "";
+                    }
+
+                    @Override
+                    public LocalDate fromString(String string) {
+                        return (string != null && !string.isEmpty())
+                                ? LocalDate.parse(string, dateFormatter)
+                                : null;
+                    }
+                });
            }
     public ListView<String> tableView;
     MoneyService service = new MoneyService();
