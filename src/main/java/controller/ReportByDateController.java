@@ -75,7 +75,7 @@ public class  ReportByDateController extends ViewController implements Initializ
         try{
             ObservableList<String> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue());
+            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue(), endDate.getValue());
 
             for (Money money : moneyRecords) {
                 recList.add(money.getCreatedAt() + "   "  + money.getCategory() + "   " + money.getAmount() + "   " + money.getInOrOut());}

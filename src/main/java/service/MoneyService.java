@@ -177,7 +177,7 @@ public class MoneyService {
         return budget;
     }
 
-    public ArrayList<Money> getReportByDate(int userId, LocalDate createdAt) throws Exception {
+    public ArrayList<Money> getReportByDate(int userId, LocalDate startDate, LocalDate endDate ) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
@@ -185,8 +185,8 @@ public class MoneyService {
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
-        statement.setDate(2, Date.valueOf(createdAt));
-        statement.setDate(3, Date.valueOf(createdAt));
+        statement.setDate(2, Date.valueOf(startDate));
+        statement.setDate(3, Date.valueOf(endDate));
 
         ResultSet result = statement.executeQuery();
 
