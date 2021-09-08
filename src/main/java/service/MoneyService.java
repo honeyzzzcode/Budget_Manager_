@@ -181,11 +181,12 @@ public class MoneyService {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "SELECT * " + "FROM money WHERE userID = ? AND createdAt = ?";
+        String query = "SELECT * " + "FROM money WHERE userID = ? AND createdAt > ? ' 00:00:00' AND createdAt < ? ' 23:59:59'";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
         statement.setDate(2, Date.valueOf(createdAt));
+        statement.setDate(3, Date.valueOf(createdAt));
 
         ResultSet result = statement.executeQuery();
 

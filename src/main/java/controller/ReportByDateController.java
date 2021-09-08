@@ -27,28 +27,43 @@ public class  ReportByDateController extends ViewController implements Initializ
 
     @FXML
     private DatePicker startDate;
-   /* @FXML
-    private DatePicker endDate;*/
+    @FXML
+    private DatePicker endDate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        startDate.setConverter(
+                new StringConverter<LocalDate>() {
+                    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-            startDate.setConverter(
-                    new StringConverter<LocalDate>() {
-                        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    @Override
+                    public String toString(LocalDate date) {
+                        return (date != null) ? dateFormatter.format(date) : "";
+                    }
 
-                        @Override
-                        public String toString(LocalDate date) {
-                            return (date != null) ? dateFormatter.format(date) : "";
-                        }
+                    @Override
+                    public LocalDate fromString(String string) {
+                        return (string != null && !string.isEmpty())
+                                ? LocalDate.parse(string, dateFormatter)
+                                : null;
+                    }
+                });
+        endDate.setConverter(
+                new StringConverter<LocalDate>() {
+                    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-                        @Override
-                        public LocalDate fromString(String string) {
-                            return (string != null && !string.isEmpty())
-                                    ? LocalDate.parse(string, dateFormatter)
-                                    : null;
-                        }
-                    });
+                    @Override
+                    public String toString(LocalDate date) {
+                        return (date != null) ? dateFormatter.format(date) : "";
+                    }
+
+                    @Override
+                    public LocalDate fromString(String string) {
+                        return (string != null && !string.isEmpty())
+                                ? LocalDate.parse(string, dateFormatter)
+                                : null;
+                    }
+                });
            }
     public ListView<String> tableView;
     MoneyService service = new MoneyService();
@@ -59,7 +74,7 @@ public class  ReportByDateController extends ViewController implements Initializ
         try{
             ObservableList<String> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue());
+            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue(), endDate.getValue());
 
             for (Money money : moneyRecords) {
                 recList.add(money.getCreatedAt() + "   "  + money.getCategory() + "   " + money.getAmount() + "   " + money.getInOrOut());}
