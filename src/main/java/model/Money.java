@@ -81,5 +81,9 @@ public class Money {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
+    public Money(Timestamp createdAt, String inOrOut, float amount) {
+        this.createdAt = createdAt;
+        this.inOrOut = InOrOut.valueOf(inOrOut);
+        this.amount = amount;
+    }
 }

@@ -28,11 +28,11 @@
 
         <DatePicker fx:id="startDate" layoutX="91.0" layoutY="51.0" />
         <DatePicker fx:id="endDate" layoutX="92.0" layoutY="92.0" />
-        <Button layoutX="149.0" layoutY="129.0" mnemonicParsing="false" onAction="#showMenu1" text="OK" />
+        <Button layoutX="300.0" layoutY="63.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: springgreen;"  onAction="#showMenu1" text="OK" />
         <Label layoutX="21.0" layoutY="55.0" text="Start Date" />
         <Label layoutX="21.0" layoutY="96.0" text="EndDate" />
 
-        <Button layoutX="346.0" layoutY="43.0" onAction="#showMenu" style="-fx-font-size: 30px; -fx-text-fill: black; -fx-background-color: pink;" text="MENU" AnchorPane.rightAnchor="128.66666666666669" />
+        <Button layoutX="447.0" layoutY="43.0" onAction="#showMenu" style="-fx-font-size: 20; -fx-text-fill: grey; -fx-background-color: palegreen;" text="MENU" AnchorPane.rightAnchor="27.66666666666663" />
 
     </children>
 

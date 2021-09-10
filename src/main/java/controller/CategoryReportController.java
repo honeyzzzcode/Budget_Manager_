@@ -52,15 +52,17 @@ public class  CategoryReportController extends ViewController implements Initial
         CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
         CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
         CBCategory.getItems().add(String.valueOf(Category.GOALS));
+        CBCategory.getItems().add(String.valueOf(Category.CASH));
+        CBCategory.getItems().add(String.valueOf(Category.BANK));
     }
     public void showMenu1(){
         try {
             ObservableList<Money> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money> moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+            ArrayList<Money> moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(),CBCategory.getValue());
 
             for (Money money : moneyRecords) {
-                recList.add(new Money(money.getCreatedAt(), money.getInOrOut(),money.getAmount() ,money.getCategory()));
+                recList.add(new Money(money.getCreatedAt(), money.getInOrOut(),money.getAmount()));
             }
 
             createdCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
@@ -70,7 +72,4 @@ public class  CategoryReportController extends ViewController implements Initial
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        }
-}
+}}
