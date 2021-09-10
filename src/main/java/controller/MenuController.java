@@ -69,10 +69,10 @@ public class MenuController extends ViewController  implements Initializable {
         }
     }
 
-    public void showReport(ActionEvent actionEvent) {
+    public void showTotalReport(ActionEvent actionEvent) {
         try {
 
-            changeScene(actionEvent, "Report");
+            changeScene(actionEvent, "totalReport");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();

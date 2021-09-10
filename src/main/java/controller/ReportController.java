@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class  ReportController extends ViewController implements Initializable {
 
 
-  public TableView<Money> tableView;
+    public TableView<Money> tableView;
 
     @FXML
     private TableColumn<Money, String> tvDate;
@@ -70,7 +70,7 @@ public class  ReportController extends ViewController implements Initializable {
             e.printStackTrace();
         }
     }
-@FXML
+    @FXML
     public void handleButtonAction(ActionEvent actionEvent) {
         /*if(actionEvent.getSource() == btnUpdate){
             service.updateRecord();

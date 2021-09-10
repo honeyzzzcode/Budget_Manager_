@@ -26,9 +26,10 @@ import java.util.ResourceBundle;
 public class  TotalReportController extends ViewController implements Initializable {
 
 
-    public ListView<String> tableView;
-    // public TableView<String> tableView;
 
+     public TableView<Money> tableView;
+    public TableColumn<Money,String > typeCol;
+    public TableColumn<Money,Float> amountCol;
 
     public void showMenu(ActionEvent actionEvent) {
         try {
@@ -43,15 +44,14 @@ public class  TotalReportController extends ViewController implements Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            ObservableList<String> recList = FXCollections.observableArrayList();
+            ObservableList<Money> recList = FXCollections.observableArrayList();
 
             ArrayList<Money>  moneyRecords = this.service.getTotalReport(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
-                recList.add(money.getInOrOut() + "   " + money.getTotal() );
-
-
-            }
+                recList.add(new Money(money.getInOrOut(),money.getTotal()) ); }
+            typeCol.setCellValueFactory(new PropertyValueFactory<>("inOrOut"));
+            amountCol.setCellValueFactory(new PropertyValueFactory<>("total"));
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,4 +1,5 @@
 package controller;
+
 import javafx.scene.control.DatePicker;
 import Types.Category;
 import Types.InOrOut;
@@ -16,6 +17,7 @@ import javafx.util.StringConverter;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -23,15 +25,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class  ReportByDateController extends ViewController implements Initializable {
+public class ReportByDateController extends ViewController implements Initializable {
 
     @FXML
     private DatePicker startDate;
-   @FXML
+    @FXML
     private DatePicker endDate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         startDate.setConverter(
                 new StringConverter<LocalDate>() {
@@ -65,25 +68,37 @@ public class  ReportByDateController extends ViewController implements Initializ
                                 : null;
                     }
                 });
-           }
-    public ListView<String> tableView;
+    }
+
+    public TableView<Money> tableView;
+
+   public TableColumn<Money,Float> amountCol;
+    public TableColumn<Money, String> typeCol;
+    public TableColumn<Money, String> createdCol;
+    public TableColumn<Money, Integer> categoryCol;
     MoneyService service = new MoneyService();
 
 
-    public void showMenu1(){
+    public void showMenu1() {
 
-        try{
-            ObservableList<String> recList = FXCollections.observableArrayList();
+        try {
+            ObservableList<Money> recList = FXCollections.observableArrayList();
 
-            ArrayList<Money>  moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue(), endDate.getValue());
+            ArrayList<Money> moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue(), endDate.getValue());
 
             for (Money money : moneyRecords) {
-                recList.add(money.getCreatedAt() + "   "  + money.getCategory() + "   " + money.getAmount() + "   " + money.getInOrOut());}
+                recList.add(new Money(money.getCreatedAt(),money.getCategory(),money.getAmount() , money.getInOrOut()));
+            }
 
+            createdCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<>("InOrOut"));
+            categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
+            amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();
-        }}
+        }
+    }
 
     public void showMenu(ActionEvent actionEvent) {
         try {

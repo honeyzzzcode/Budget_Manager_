@@ -73,9 +73,9 @@ public class Money {
     }
 
     public Money(int ID,String inOrOut, String category, float amount, int UserId, Timestamp createdAt, Timestamp updatedAt) {
-       this.ID = ID;
+        this.ID = ID;
         this.inOrOut = InOrOut.valueOf(inOrOut);
-       this.category  = Category.valueOf(category);
+        this.category  = Category.valueOf(category);
         this.amount = amount;
         this.userId = userId;
         this.createdAt = createdAt;
