@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoryReportController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoryReportController">
     <children>
-        <Label layoutX="110.0" layoutY="101.0" text="Choose Category" GridPane.columnIndex="0" GridPane.rowIndex="9">
+        <Label layoutX="101.0" layoutY="87.0" text="Choose Category :" GridPane.columnIndex="0" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font></Label>
 
         <ChoiceBox fx:id="CBCategory" layoutX="75.0" layoutY="127.0" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
-        <Button layoutX="246.0" layoutY="126.0" onAction="#showMenu1" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: springgreen;" text="OK" />
+        <Button layoutX="246.0" layoutY="126.0" onAction="#showMenu1" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: darkseagreen;" text="OK" />
 
-        <Button layoutX="433.0" layoutY="105.0" onAction="#showMenu" style="-fx-font-size: 20; -fx-text-fill: grey; -fx-background-color: palegreen;" text="MENU" AnchorPane.rightAnchor="83.0" />
-        <TableView fx:id="tableView" layoutX="75.0" layoutY="173.0" prefHeight="200.0" prefWidth="425.0">
+        <Button layoutX="489.0" layoutY="85.0" onAction="#showMenu" style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: palegreen;" text="MENU" AnchorPane.rightAnchor="29.0" />
+        <TableView fx:id="tableView" layoutX="26.0" layoutY="164.0" prefHeight="209.0" prefWidth="554.0">
 
         <columns>
-            <TableColumn fx:id="createdCol" prefWidth="179.0" text="DATE" />
-            <TableColumn fx:id="typeCol" prefWidth="280.0" text="TYPE" />
-            <TableColumn fx:id="amountCol" prefWidth="200.0" text="AMOUNT(€)" />
+            <TableColumn fx:id="createdCol" prefWidth="203.0" text="DATE" />
+            <TableColumn fx:id="typeCol" minWidth="0.0" prefWidth="162.0" text="TYPE" />
+            <TableColumn fx:id="amountCol" maxWidth="317.0" prefWidth="186.0" text="AMOUNT($)" />
         </columns>
 
         </TableView>

@@ -1,28 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Label?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ChoiceBox?>
-<GridPane fx:controller="controller.LoginController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
-          style="-fx-background-color: lavender" >
-  <Text text="Welcome to login page" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"
-        style="-fx-font-size: 28px; -fx-text-fill: black; -fx-background-color: pink"/>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="531.0" prefWidth="566.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+  <Text layoutX="149.0" layoutY="150.0" style="-fx-font-size: 28px; -fx-text-fill: black; -fx-background-color: pink" text="Welcome to login page" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-  <Label text="Enter your username" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-size: 18px; "/>
-  <TextField fx:id="usernameField" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-font-size: 18px; "/>
+    <ImageView layoutX="223.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="/pictures/bill.png"/>
+        </image>
+    </ImageView>
 
-  <Label text="Enter your password" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 18px; "/>
-  <PasswordField fx:id="passwordField" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-size: 18px; "/>
 
-  <Button text="Register" GridPane.rowIndex="3" onAction="#handleLoadRegister" GridPane.columnIndex="0"
-    style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: pink"/>
-  <Button text="Login" GridPane.rowIndex="3" onAction="#handleUserLogin" GridPane.columnIndex="1"
-    style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: pink"/>
+    <ImageView layoutX="149.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="/pictures/bill.png"/>
+        </image>
+    </ImageView>
 
-  <Label GridPane.rowIndex="5" fx:id="notificationLabel" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
-</GridPane>
+  <Label layoutX="73.0" layoutY="291.0" style="-fx-font-size: 18px; " text="Enter your username" />
+  <TextField fx:id="usernameField" layoutX="262.0" layoutY="285.0" style="-fx-font-size: 18px; " />
+
+  <Label layoutX="74.0" layoutY="359.0" style="-fx-font-size: 18px; " text="Enter your password" />
+  <PasswordField fx:id="passwordField" layoutX="262.0" layoutY="353.0" style="-fx-font-size: 18px; " />
+
+  <Button layoutX="151.0" layoutY="410.0" onAction="#handleLoadRegister" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Register" />
+  <Button layoutX="306.0" layoutY="410.0" onAction="#handleUserLogin" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Login" />
+
+  <Label fx:id="notificationLabel" />
+
+</AnchorPane>

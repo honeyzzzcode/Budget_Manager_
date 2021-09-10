@@ -2,19 +2,24 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: F5FFFA;" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
-    <Label fx:id="budgetField" style="-fx-font-size: 28px;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-    <Label prefHeight="34.0" prefWidth="402.0" style="-fx-font-size: 28px; " text="YOUR CURRENT BUDGET IS :" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-
-    <Button contentDisplay="CENTER" onAction="#addIncome" prefHeight="44.0" prefWidth="263.0" style="-fx-background-color: springgreen; -fx-text-fill: black; -fx-font-size: 30;" text="ADD INCOME" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.rowIndex="5">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+   <Label fx:id="budgetField" layoutX="463.0" layoutY="34.0" style="-fx-font-size: 28px;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <Label layoutX="60.0" layoutY="34.0" prefHeight="34.0" prefWidth="402.0" style="-fx-font-size: 28px; " text="YOUR CURRENT BUDGET IS :" />
+    <ImageView layoutX="20.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="/pictures/coin.png"/>
+        </image>
+    </ImageView>
+    <Button contentDisplay="CENTER" layoutX="60.0" layoutY="174.0" onAction="#addIncome" prefHeight="44.0" prefWidth="263.0" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 20;" text="ADD INCOME" textOverrun="CENTER_WORD_ELLIPSIS">
       <textFill>
          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
             <stops>
@@ -34,61 +39,12 @@
       <font>
          <Font size="10.0" />
       </font></Button>
-    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#addExpense" prefHeight="54.0" prefWidth="262.0" style="-fx-font-size: 30; -fx-border-color: lightsteelblue; -fx-text-fill: black; -fx-background-color: springgreen;" text="ADD EXPENSE" textAlignment="CENTER" GridPane.rowIndex="9" />
-    <Button contentDisplay="CENTER" onAction="#handleLogout" prefHeight="49.0" prefWidth="125.0" style="-fx-background-color: palegreen; -fx-text-fill: grey; -fx-font-size: 15;" text="LOGOUT" GridPane.rowIndex="15" />
-    <Button alignment="CENTER" contentDisplay="CENTER"  onAction="#backToPROF" prefHeight="51.0" prefWidth="161.0" style="-fx-background-color: palegreen; -fx-text-fill: grey; -fx-font-size: 15;" text="BACK TO PROFILE" textAlignment="CENTER" GridPane.rowIndex="12" />
-   <Button layoutX="10.0" layoutY="118.0" onAction="#showSimpleReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: springgreen; -fx-text-fill: black; -fx-font-size: 30px;" text=" SIMPLE REPORT" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-   <Button layoutX="375.0" layoutY="118.0" onAction="#showTotalReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: springgreen; -fx-text-fill: black; -fx-font-size: 30px;" text=" SUMMARY REPORT" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-   <Button layoutX="375.0" layoutY="237.0" onAction="#categoryReport" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: springgreen; -fx-text-fill: black; -fx-font-size: 30px;" text="CATEGORY REPORT" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-   <Button layoutX="375.0" layoutY="237.0" onAction="#reportByDate" prefHeight="78.0" prefWidth="345.0" style="-fx-background-color: springgreen; -fx-text-fill: black; -fx-font-size: 30px;" text="DATE REPORT" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-   <columnConstraints>
-      <ColumnConstraints maxWidth="397.33331298828125" minWidth="362.0" prefWidth="362.0" />
-      <ColumnConstraints maxWidth="40.0" minWidth="4.66668701171875" prefWidth="40.0" />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints></GridPane>
+    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="108.0" onAction="#addExpense" prefHeight="44.0" prefWidth="262.0" style="-fx-font-size: 20; -fx-border-color: lightsteelblue; -fx-text-fill: black; -fx-background-color: palegreen;" text="ADD EXPENSE" textAlignment="CENTER" />
+    <Button contentDisplay="CENTER" layoutX="60.0" layoutY="315.0" onAction="#handleLogout" prefHeight="49.0" prefWidth="125.0" style="-fx-background-color: darkseagreen; -fx-text-fill: black; -fx-font-size: 15;" text="LOGOUT" />
+    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="243.0" onAction="#backToPROF" prefHeight="51.0" prefWidth="161.0" style="-fx-background-color: darkseagreen; -fx-text-fill: black; -fx-font-size: 15;" text="BACK TO PROFILE" textAlignment="CENTER" GridPane.rowIndex="12" />
+   <Button layoutX="344.0" layoutY="105.0" onAction="#showSimpleReport" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 20px;" text=" SIMPLE REPORT" />
+   <Button layoutX="344.0" layoutY="171.0" onAction="#showTotalReport" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 20px;" text=" SUMMARY REPORT" />
+   <Button layoutX="344.0" layoutY="243.0" onAction="#categoryReport" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 20px;" text="CATEGORY REPORT" />
+   <Button layoutX="344.0" layoutY="315.0" onAction="#reportByDate" prefHeight="49.0" prefWidth="278.0" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 20px;" text="DATE REPORT" />
+
+      </AnchorPane>

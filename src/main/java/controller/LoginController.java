@@ -1,25 +1,33 @@
 package controller;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.AppData;
 import model.Property;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import service.UserService;
 
-public class LoginController extends ViewController {
+public class LoginController extends ViewController  {
 
   public Label notificationLabel;
   public TextField usernameField;
   public Integer userID;
+
   public Integer getUserID() {
     return userID;
   }
@@ -56,4 +64,6 @@ public class LoginController extends ViewController {
       showAlert("Problem loading scene", e.getMessage(), AlertType.ERROR);
     }
   }
+
+
 }

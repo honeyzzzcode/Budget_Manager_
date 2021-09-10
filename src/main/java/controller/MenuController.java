@@ -85,7 +85,7 @@ public class MenuController extends ViewController  implements Initializable {
 
         try {
             String str = String.format("%.02f",  moneyService.getMoney(AppData.getInstance().getLoggedInUserId()));
-            budgetField.setText(str+"€");
+            budgetField.setText(str+"$");
         } catch (Exception e) {
             e.printStackTrace();
         }

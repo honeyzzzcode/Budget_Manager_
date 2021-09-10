@@ -40,6 +40,7 @@ public class Money {
     }
 
 
+
     public Float getTotal() {
         return total;
     }

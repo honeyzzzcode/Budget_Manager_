@@ -4,18 +4,25 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
 <children>
-    <Button onAction="#showMenu" style="-fx-font-size: 30px; -fx-text-fill: black; -fx-background-color: pink;" text="MENU" AnchorPane.rightAnchor="1" />
-      <Button  layoutX="150.0" layoutY="234.0" mnemonicParsing="false" text="Update" />
-      <Button  layoutX="224.0" layoutY="234.0" mnemonicParsing="false" text="Delete" />
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="23.0" prefHeight="200.0" prefWidth="384.0">
+    <Button layoutX="471.0" layoutY="23.0" onAction="#showMenu" prefHeight="40.0" prefWidth="129.0" style="-fx-font-size: 20px; -fx-text-fill: black; -fx-background-color: palegreen;" text="MENU" AnchorPane.rightAnchor="0.0" />
+      <Button layoutX="100.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: darkseagreen;" text="Update">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button layoutX="256.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: darkseagreen;" text="Delete">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="23.0" prefHeight="247.0" prefWidth="449.0">
         <columns>
-          <TableColumn fx:id="tvDate" prefWidth="75.0" text="DATE" />
-          <TableColumn fx:id="tvInOrOut" prefWidth="101.33331298828125" text="TYPE" />
-            <TableColumn fx:id="tvAmount" prefWidth="101.33331298828125" text="AMOUNT(€)" />
-            <TableColumn fx:id="tvCategory" prefWidth="75.0" text="CATEGORY" />
+          <TableColumn fx:id="tvDate" prefWidth="131.0" text="DATE" />
+          <TableColumn fx:id="tvInOrOut" prefWidth="116.0" text="TYPE" />
+            <TableColumn fx:id="tvAmount" prefWidth="88.0" text="AMOUNT($)" />
+            <TableColumn fx:id="tvCategory" prefWidth="128.0" text="CATEGORY" />
         </columns>
       </TableView>
 </children>

@@ -52,7 +52,7 @@ public class ProfileController extends ViewController implements Initializable {
       emailAddressLabel.setText(user.getEmail());
       MoneyService moneyService = new MoneyService();
       String str = String.format("%.02f",  moneyService.getMoney(AppData.getInstance().getLoggedInUserId()));
-      budgetLabel.setText(str+"€");
+      budgetLabel.setText(str+"$");
 
 
       createdAtLabel.setText(String.valueOf(user.getCreatedAt()));
