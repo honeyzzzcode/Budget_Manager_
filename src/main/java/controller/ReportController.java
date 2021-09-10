@@ -1,19 +1,16 @@
 package controller;
 
-import Types.Category;
 import Types.InOrOut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
@@ -26,9 +23,22 @@ import java.util.ResourceBundle;
 public class  ReportController extends ViewController implements Initializable {
 
 
-    public ListView<String> tableView;
-   // public TableView<String> tableView;
+  public TableView<String> tableView;
 
+    @FXML
+    private TableColumn<Money, String> tvDate;
+    @FXML
+    private TableColumn<Money, InOrOut> tvInOrOut;
+    @FXML
+    private TableColumn<Money, Float> tvAmount;
+
+    @FXML
+    private TableColumn<Money, String> tvCategory;
+
+    @FXML
+    private Button btnUpdate;
+    @FXML
+    private Button btnDelete;
 
     public void showMenu(ActionEvent actionEvent) {
         try {
@@ -44,19 +54,29 @@ public class  ReportController extends ViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             ObservableList<String> recList = FXCollections.observableArrayList();
+            tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("DATE"));
+            tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("IN OR OUT"));
+            tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("AMOUNT"));
+            tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("CATEGORY"));
 
             ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
-                recList.add(money.getCategory() + "   " + money.getInOrOut() + "   " + money.getAmount() );}
+               /* recList.add((money.getCreatedAt(), money.getCategory()) , money.getInOrOut() , money.getAmount());*/
+            }
 
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-
-
-
+    }
+@FXML
+    public void handleButtonAction(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == btnUpdate){
+            service.updateRecord();
+        }
+        else if(actionEvent.getSource() == btnDelete){
+            service.deleteRecord();
+        }
     }
 }

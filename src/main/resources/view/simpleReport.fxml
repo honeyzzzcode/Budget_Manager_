@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ReportController"
-            prefHeight="400.0" prefWidth="600.0" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
 <children>
-    <ListView fx:id="tableView" layoutX="12.0" layoutY="24.0" prefWidth="600.0" prefHeight="355.0">
-
-
-    </ListView>
     <Button onAction="#showMenu" style="-fx-font-size: 30px; -fx-text-fill: black; -fx-background-color: pink;" text="MENU" AnchorPane.rightAnchor="1" />
+      <Button onAction="#btnUpdate" layoutX="150.0" layoutY="234.0" mnemonicParsing="false" text="Update" />
+      <Button onAction="#btnDelete" layoutX="224.0" layoutY="234.0" mnemonicParsing="false" text="Delete" />
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="23.0" prefHeight="200.0" prefWidth="384.0">
+        <columns>
+          <TableColumn fx:id="tvDate" prefWidth="75.0" text="DATE" />
+          <TableColumn fx:id="tvInOrOut" prefWidth="101.33331298828125" text="IN OR OUT" />
+            <TableColumn fx:id="tvAmount" prefWidth="101.33331298828125" text="AMOUNT" />
+            <TableColumn fx:id="tvCategory" prefWidth="75.0" text="CATEGORY" />
+        </columns>
+      </TableView>
 </children>
 
     </AnchorPane>

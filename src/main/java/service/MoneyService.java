@@ -1,6 +1,7 @@
 package service;
 
 import Types.Category;
+import controller.CategoryReportController;
 import model.Money;
 import model.User;
 import repository.DBHandler;
@@ -8,6 +9,8 @@ import repository.DBHandler;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import static jdk.nashorn.internal.parser.TokenType.AND;
 
 public class MoneyService {
 
@@ -110,6 +113,58 @@ public class MoneyService {
         return moneyRecords;
     }
 
+   public void updateRecord(int userId) throws Exception {
+        userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
+        connection = DBHandler.getConnection();
+        String query = "UPDATE money SET createdAt = ? AND inOrOut = ? AND amount = ? AND category = ? WHERE userID = ?";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, userId);
+
+        ResultSet result = statement.executeQuery();
+
+        while (result.next()) {
+            moneyRecords.add(new Money(
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
+            ));
+        }
+        DBHandler.close(result, statement, connection);
+        return moneyRecords; //должен возвращаать обновленную таблицу
+    }
+    public void deleteRecord(int userId) throws Exception {
+        userID=userId;
+        ArrayList<Money> moneyRecords = new ArrayList<>();
+        connection = DBHandler.getConnection();
+        String query = "DELETE FROM money WHERE id = ? AND userID = ?";
+        Connection connection1 = DBHandler.getConnection();
+        PreparedStatement statement = connection1.prepareStatement(query);
+        statement.setInt(1, id); //че ему не нравится? это primery key
+        statement.setInt(2, userId);
+
+        ResultSet result = statement.executeQuery();
+
+        while (result.next()) {
+            moneyRecords.add(new Money(
+                    result.getInt("id"),
+                    result.getString("inOrOut"),
+                    result.getString("category"),
+                    result.getFloat("amount"),
+                    result.getInt("userID"),
+                    result.getTimestamp("createdAt"),
+                    result.getTimestamp("updatedAt")
+            ));
+        }
+        DBHandler.close(result, statement, connection);
+        return moneyRecords; //должен возвращаать обновленную таблицу
+    }
+
     public ArrayList<Money> getCategoryRecord(int userId, String category) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
@@ -204,4 +259,7 @@ public class MoneyService {
         DBHandler.close(result, statement, connection);
         System.out.println();
         return moneyRecords;
-}}
+}
+
+
+}
