@@ -26,7 +26,10 @@ public class  CategoryReportController extends ViewController implements Initial
     @FXML
     private ChoiceBox<String> CBCategory;
 
-    public ListView<String> tableView;
+    public TableView<Money> tableView;
+    public TableColumn<Money,Float> amountCol;
+    public TableColumn<Money, String> typeCol;
+    public TableColumn<Money, String> createdCol;
 
     public void showMenu(ActionEvent actionEvent) {
         try {
@@ -49,19 +52,25 @@ public class  CategoryReportController extends ViewController implements Initial
         CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
         CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
         CBCategory.getItems().add(String.valueOf(Category.GOALS));
-        }
-    public void showMenu1(){
-        try{
-        ObservableList<String> recList = FXCollections.observableArrayList();
-
-        ArrayList<Money>  moneyRecords = this.service.getCategoryRecord(AppData.getInstance().getLoggedInUserId(), CBCategory.getValue());
-
-        for (Money money : moneyRecords) {
-            recList.add(money.getInOrOut() + "   " + money.getAmount() );}
-
-        tableView.setItems(recList);
-    } catch (Exception e) {
-        e.printStackTrace();
-    }}
     }
+    public void showMenu1(){
+        try {
+            ObservableList<Money> recList = FXCollections.observableArrayList();
 
+            ArrayList<Money> moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+
+            for (Money money : moneyRecords) {
+                recList.add(new Money(money.getCreatedAt(), money.getInOrOut(),money.getAmount() ,money.getCategory()));
+            }
+
+            createdCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<>("InOrOut"));
+            amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+            tableView.setItems(recList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        }
+}

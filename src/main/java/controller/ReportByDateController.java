@@ -31,7 +31,13 @@ public class ReportByDateController extends ViewController implements Initializa
     private DatePicker startDate;
     @FXML
     private DatePicker endDate;
+    public TableView<Money> tableView;
 
+    public TableColumn<Money,Float> amountCol;
+    public TableColumn<Money, String> typeCol;
+    public TableColumn<Money, String> createdCol;
+    public TableColumn<Money, Integer> categoryCol;
+    MoneyService service = new MoneyService();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -70,13 +76,7 @@ public class ReportByDateController extends ViewController implements Initializa
                 });
     }
 
-    public TableView<Money> tableView;
 
-   public TableColumn<Money,Float> amountCol;
-    public TableColumn<Money, String> typeCol;
-    public TableColumn<Money, String> createdCol;
-    public TableColumn<Money, Integer> categoryCol;
-    MoneyService service = new MoneyService();
 
 
     public void showMenu1() {
@@ -87,7 +87,7 @@ public class ReportByDateController extends ViewController implements Initializa
             ArrayList<Money> moneyRecords = this.service.getReportByDate(AppData.getInstance().getLoggedInUserId(), startDate.getValue(), endDate.getValue());
 
             for (Money money : moneyRecords) {
-                recList.add(new Money(money.getCreatedAt(),money.getCategory(),money.getAmount() , money.getInOrOut()));
+                recList.add(new Money(money.getCreatedAt(), money.getInOrOut(),money.getAmount() ,money.getCategory()));
             }
 
             createdCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));

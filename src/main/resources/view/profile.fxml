@@ -15,24 +15,24 @@
             <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="userNameLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+    <Label fx:id="userNameLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
     <Label text="Phone Number" GridPane.rowIndex="6">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="phoneNumberLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+    <Label fx:id="phoneNumberLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
 
     <Label text="Email Address" GridPane.rowIndex="4">
         <font>
             <Font name="System Bold Italic" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="emailAddressLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+    <Label fx:id="emailAddressLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
     <Label style="-fx-font-size: 24; -fx-text-fill: green;" text="CURRENT BUDGET" GridPane.rowIndex="5" />
-    <Label fx:id="budgetLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+    <Label fx:id="budgetLabel" style="-fx-font-size: 16px;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
     <Label style="-fx-font-size: 30px;" text="€" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
     <Label text="Name" GridPane.rowIndex="2">
@@ -40,21 +40,21 @@
             <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="nameLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <Label fx:id="nameLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 
     <Label text="Last Updated" GridPane.rowIndex="7">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="updatedAtLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+    <Label fx:id="updatedAtLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
 
     <Label text="Last Created" GridPane.rowIndex="8">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="createdAtLabel" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+    <Label fx:id="createdAtLabel" style="-fx-font-size: 12px;" GridPane.columnIndex="2" GridPane.rowIndex="8" />
 
     <Button onAction="#handleLogout" prefHeight="60.0" prefWidth="175.0" snapToPixel="false" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 30px;" text="LOGOUT" GridPane.rowIndex="10" />
 
