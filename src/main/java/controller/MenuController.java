@@ -52,7 +52,6 @@ public class MenuController extends ViewController  implements Initializable {
 
     public void backToPROF(ActionEvent actionEvent) {
         try {
-
             changeScene(actionEvent, "profile");
         } catch (IOException e) {
             showAlert("Problem with navigation", e.getMessage(), Alert.AlertType.ERROR);

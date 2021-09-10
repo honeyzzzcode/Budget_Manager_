@@ -60,12 +60,10 @@ public class  ReportController extends ViewController implements Initializable {
             for (Money money : moneyRecords) {
                 recList.add(new Money(money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
             }
-            tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("DATE"));
-            tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("IN OR OUT"));
-            tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("AMOUNT"));
-            tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("CATEGORY"));
-
-
+            tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
+            tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
+            tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
+            tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
 
             tableView.setItems(recList);
         } catch (Exception e) {

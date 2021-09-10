@@ -94,9 +94,7 @@ public class MoneyService {
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
-
         ResultSet result = statement.executeQuery();
-
         while (result.next()) {
             moneyRecords.add(new Money(
                     result.getInt("id"),
@@ -113,7 +111,7 @@ public class MoneyService {
         return moneyRecords;
     }
 
-   /*public ArrayList<Money> updateRecord(int userId) throws Exception {
+   public void updateRecord(int userId) throws Exception {
         userID=userId;
         ArrayList<Money> moneyArrayList = new ArrayList<>();
         connection = DBHandler.getConnection();
@@ -136,8 +134,7 @@ public class MoneyService {
             ));
         }
         DBHandler.close(result, statement, connection);
-       getAllMoneyRecords(userId);
-        return moneyRecords;  //должен возвращаать обновленную таблицу
+
     }
     public void deleteRecord(int ID , int userId) throws Exception {
         userID=userId;
@@ -163,8 +160,8 @@ public class MoneyService {
             ));
         }
         DBHandler.close(result, statement, connection);
-        return moneyRecords; //должен возвращаать обновленную таблицу
-    }*/
+
+    }
 
     public ArrayList<Money> getCategoryRecord(int userId, String category) throws Exception {
         userID=userId;
