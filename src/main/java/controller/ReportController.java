@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class  ReportController extends ViewController implements Initializable {
 
 
-  public TableView<String> tableView;
+  public TableView<Money> tableView;
 
     @FXML
     private TableColumn<Money, String> tvDate;
@@ -31,7 +31,6 @@ public class  ReportController extends ViewController implements Initializable {
     private TableColumn<Money, InOrOut> tvInOrOut;
     @FXML
     private TableColumn<Money, Float> tvAmount;
-
     @FXML
     private TableColumn<Money, String> tvCategory;
 
@@ -53,17 +52,20 @@ public class  ReportController extends ViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            ObservableList<String> recList = FXCollections.observableArrayList();
+
+            ObservableList<Money> recList = FXCollections.observableArrayList();
+
+            ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+
+            for (Money money : moneyRecords) {
+                recList.add(new Money(money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
+            }
             tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("DATE"));
             tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("IN OR OUT"));
             tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("AMOUNT"));
             tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("CATEGORY"));
 
-            ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
-            for (Money money : moneyRecords) {
-               /* recList.add((money.getCreatedAt(), money.getCategory()) , money.getInOrOut() , money.getAmount());*/
-            }
 
             tableView.setItems(recList);
         } catch (Exception e) {
@@ -72,11 +74,11 @@ public class  ReportController extends ViewController implements Initializable {
     }
 @FXML
     public void handleButtonAction(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == btnUpdate){
+        /*if(actionEvent.getSource() == btnUpdate){
             service.updateRecord();
         }
         else if(actionEvent.getSource() == btnDelete){
-            service.deleteRecord();
-        }
+            service.deleteRecord(ID);
+        }*/
     }
 }

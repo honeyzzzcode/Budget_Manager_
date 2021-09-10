@@ -31,6 +31,15 @@ public class Money {
         this.inOrOut = InOrOut.valueOf(inOrOut);
     }
 
+    public Money(Timestamp createdAt, String inOrOut, float amount, String category) {
+        this.createdAt = createdAt;
+        this.inOrOut = InOrOut.valueOf(inOrOut);
+        this.amount = amount;
+        this.category = Category.valueOf(category);
+
+    }
+
+
     public Float getTotal() {
         return total;
     }

@@ -113,9 +113,9 @@ public class MoneyService {
         return moneyRecords;
     }
 
-   public void updateRecord(int userId) throws Exception {
+   /*public ArrayList<Money> updateRecord(int userId) throws Exception {
         userID=userId;
-        ArrayList<Money> moneyRecords = new ArrayList<>();
+        ArrayList<Money> moneyArrayList = new ArrayList<>();
         connection = DBHandler.getConnection();
         String query = "UPDATE money SET createdAt = ? AND inOrOut = ? AND amount = ? AND category = ? WHERE userID = ?";
         Connection connection1 = DBHandler.getConnection();
@@ -125,7 +125,7 @@ public class MoneyService {
         ResultSet result = statement.executeQuery();
 
         while (result.next()) {
-            moneyRecords.add(new Money(
+            moneyArrayList.add(new Money(
                     result.getInt("id"),
                     result.getString("inOrOut"),
                     result.getString("category"),
@@ -136,16 +136,17 @@ public class MoneyService {
             ));
         }
         DBHandler.close(result, statement, connection);
-        return moneyRecords; //должен возвращаать обновленную таблицу
+       getAllMoneyRecords(userId);
+        return moneyRecords;  //должен возвращаать обновленную таблицу
     }
-    public void deleteRecord(int userId) throws Exception {
+    public void deleteRecord(int ID , int userId) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
         connection = DBHandler.getConnection();
         String query = "DELETE FROM money WHERE id = ? AND userID = ?";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
-        statement.setInt(1, id); //че ему не нравится? это primery key
+        statement.setInt(1, ID);
         statement.setInt(2, userId);
 
         ResultSet result = statement.executeQuery();
@@ -163,7 +164,7 @@ public class MoneyService {
         }
         DBHandler.close(result, statement, connection);
         return moneyRecords; //должен возвращаать обновленную таблицу
-    }
+    }*/
 
     public ArrayList<Money> getCategoryRecord(int userId, String category) throws Exception {
         userID=userId;

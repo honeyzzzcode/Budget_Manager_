@@ -8,8 +8,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
 <children>
     <Button onAction="#showMenu" style="-fx-font-size: 30px; -fx-text-fill: black; -fx-background-color: pink;" text="MENU" AnchorPane.rightAnchor="1" />
-      <Button onAction="#btnUpdate" layoutX="150.0" layoutY="234.0" mnemonicParsing="false" text="Update" />
-      <Button onAction="#btnDelete" layoutX="224.0" layoutY="234.0" mnemonicParsing="false" text="Delete" />
+      <Button onAction="#handleButtonAction" layoutX="150.0" layoutY="234.0" mnemonicParsing="false" text="Update" />
+      <Button onAction="#handleButtonAction" layoutX="224.0" layoutY="234.0" mnemonicParsing="false" text="Delete" />
       <TableView fx:id="tableView" layoutX="14.0" layoutY="23.0" prefHeight="200.0" prefWidth="384.0">
         <columns>
           <TableColumn fx:id="tvDate" prefWidth="75.0" text="DATE" />
