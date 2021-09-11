@@ -178,8 +178,11 @@ public class MoneyService {
 
         while (result.next()) {
             moneyRecords.add(new Money(
-                    result.getFloat("amount"),
-                    result.getString("inOrOut")
+                    result.getTimestamp("createdAt"),
+                    result.getString("inOrOut"),
+                    result.getFloat("amount")
+
+
 
             ));
         }

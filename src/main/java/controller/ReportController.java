@@ -28,6 +28,9 @@ public class  ReportController extends ViewController implements Initializable {
     @FXML
     private TableColumn<Money, String> tvDate;
     @FXML
+    private TableColumn<Money, Integer> tvID;
+
+    @FXML
     private TableColumn<Money, InOrOut> tvInOrOut;
     @FXML
     private TableColumn<Money, Float> tvAmount;
@@ -58,8 +61,9 @@ public class  ReportController extends ViewController implements Initializable {
             ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
             for (Money money : moneyRecords) {
-                recList.add(new Money(money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
+                recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
             }
+            tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
             tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
             tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
             tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));

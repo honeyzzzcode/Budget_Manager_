@@ -10,8 +10,6 @@ public class Money {
     DecimalFormat df = new DecimalFormat("#.##");
     String formatted = df.format(2.456345);
 
-
-
     int ID;
     Category category;
     float amount;
@@ -21,6 +19,18 @@ public class Money {
     Timestamp updatedAt;
     Float total;
 
+    public Money(int id, Timestamp createdAt, String inOrOut, float amount, String category) {
+        this.ID = id;
+        this.createdAt = createdAt;
+        this.inOrOut = InOrOut.valueOf(inOrOut);
+        this.amount = amount;
+        this.category = Category.valueOf(category);
+    }
+
+
+    public int getID() {
+        return ID;
+    }
     public Money(String inOrOut, Float total) {
         this.inOrOut = InOrOut.valueOf(inOrOut);
         this.total = total;
