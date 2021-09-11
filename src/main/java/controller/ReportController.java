@@ -1,8 +1,6 @@
 package controller;
-
 import Types.Category;
 import Types.InOrOut;
-import com.sun.javafx.binding.DoubleConstant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +12,6 @@ import javafx.util.StringConverter;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -35,10 +32,6 @@ public class  ReportController extends ViewController implements Initializable {
     public ChoiceBox<String> CBCategory;
     public ChoiceBox<String> CBType;
     public DatePicker date;
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnDelete;
     @FXML
     private TableColumn<Money, String> tvDate;
     @FXML
@@ -103,18 +96,17 @@ public class  ReportController extends ViewController implements Initializable {
             for (Money money : moneyRecords) {
                 recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
             }
-            tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
-            tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
-            tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
-            tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
-            tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
+            tvID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            tvDate.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+            tvInOrOut.setCellValueFactory(new PropertyValueFactory<>("inOrOut"));
+            tvAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+            tvCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
 
             tableView.setItems(recList);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     public void handleButtonOnAction(ActionEvent actionEvent) throws Exception {
 
@@ -125,11 +117,11 @@ public class  ReportController extends ViewController implements Initializable {
         for (Money money : moneyRecords) {
             recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
         }
-        tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
-        tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
-        tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
-        tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
-        tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
+        tvID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        tvDate.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        tvInOrOut.setCellValueFactory(new PropertyValueFactory<>("inOrOut"));
+        tvAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        tvCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
 
         tableView.setItems(recList);
             showAlert("Success ", "Record deleted , continue", Alert.AlertType.INFORMATION);
@@ -142,10 +134,8 @@ public class  ReportController extends ViewController implements Initializable {
                 Integer.parseInt(idTF.getText()),
                 Float.parseFloat(amountTF.getText()),
                 CBType.getValue(),
-               CBCategory.getValue(),
+                CBCategory.getValue(),
                 AppData.getInstance().getLoggedInUserId() );
-
-
 
         ObservableList<Money> recList = FXCollections.observableArrayList();
 
@@ -153,11 +143,11 @@ public class  ReportController extends ViewController implements Initializable {
         for (Money money : moneyRecords) {
             recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
         }
-        tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
-        tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
-        tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
-        tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
-        tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
+        tvID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        tvDate.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        tvInOrOut.setCellValueFactory(new PropertyValueFactory<>("inOrOut"));
+        tvAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        tvCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
 
         tableView.setItems(recList);
         showAlert("Success ", "Record updated , continue", Alert.AlertType.INFORMATION);
