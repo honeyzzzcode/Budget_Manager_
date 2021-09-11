@@ -10,8 +10,11 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="531.0" prefWidth="566.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-  <Text layoutX="149.0" layoutY="150.0" style="-fx-font-size: 28px; -fx-text-fill: black; -fx-background-color: pink" text="Welcome to login page" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <Label layoutX="79.0" layoutY="38.0" prefHeight="48.0" prefWidth="500.0" text="Welcome to the Budget Manager " textFill="#4e9d6c"  AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="25.0"/>
+    <Label layoutX="79.0" layoutY="50.0" prefHeight="48.0" prefWidth="500.0" text="Easy way to handle your personal finance " textFill="#4e9d6c"  AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="40.0"/>
+
+  <Text layoutX="149.0" layoutY="150.0" style="-fx-font-size: 28px; -fx-text-fill: black; -fx-background-color: pink" text="Please login" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
     <ImageView layoutX="223.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
         <image>

@@ -13,7 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <AnchorPane prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <Label fx:id="budgetField" layoutX="463.0" layoutY="34.0" style="-fx-font-size: 28px;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-    <Label layoutX="60.0" layoutY="34.0" prefHeight="34.0" prefWidth="402.0" style="-fx-font-size: 28px; " text="YOUR CURRENT BUDGET IS :" />
+    <Label layoutX="60.0" layoutY="34.0" prefHeight="34.0" prefWidth="402.0" style="-fx-font-size: 28px; -fx-text-fill: green; " text="YOUR CURRENT BUDGET IS :" />
 
     <ImageView layoutX="01.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
         <image>

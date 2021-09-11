@@ -9,19 +9,22 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoryReportController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoryReportController">
     <children>
-        <Label layoutX="101.0" layoutY="87.0" text="Choose Category :" GridPane.columnIndex="0" GridPane.rowIndex="9">
+        <Label layoutX="50.0" layoutY="97.0" text="Choose Category :" GridPane.columnIndex="0" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font></Label>
 
-        <ChoiceBox fx:id="CBCategory" layoutX="75.0" layoutY="127.0" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <ChoiceBox fx:id="CBCategory" layoutX="50.0" layoutY="122.0" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
-        <Button layoutX="246.0" layoutY="126.0" onAction="#showMenu1" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: darkseagreen;" text="OK" />
+        <Button layoutX="229.0" layoutY="121.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#showMenu1" prefHeight="27.0" prefWidth="37.0" style="-fx-font-size: 12; -fx-text-fill: black; -fx-background-color: darkseagreen;" text="OK">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
 
-        <Button layoutX="489.0" layoutY="85.0" onAction="#showMenu" style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: d7ebba;" text="MENU" AnchorPane.rightAnchor="29.0" />
-        <TableView fx:id="tableView" layoutX="26.0" layoutY="164.0" prefHeight="209.0" prefWidth="554.0">
+        <Button layoutX="489.0" layoutY="85.0" onAction="#showMenu" style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: d7ebba;" text="MENU" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="43.0" />
+        <TableView fx:id="tableView" layoutX="26.0" layoutY="164.0" prefHeight="300.0" prefWidth="574.0" AnchorPane.leftAnchor="50.0">
 
         <columns>
             <TableColumn fx:id="createdCol" prefWidth="203.0" text="DATE" />
@@ -30,6 +33,11 @@
         </columns>
 
         </TableView>
+      <Label contentDisplay="CENTER" layoutX="278.0" layoutY="35.0" prefHeight="48.0" prefWidth="255.0" text="REPORT BY CATEGORY" textFill="#4e9d6c" underline="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
 
 
 

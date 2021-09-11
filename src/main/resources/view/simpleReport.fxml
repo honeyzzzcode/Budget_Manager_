@@ -7,47 +7,66 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="677.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportController">
 <children>
-    <Button layoutX="471.0" layoutY="23.0" onAction="#showMenu" prefHeight="40.0" prefWidth="129.0" style="-fx-font-size: 20px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="MENU" AnchorPane.rightAnchor="0.0" />
+    <Button layoutX="489.0" layoutY="85.0" onAction="#showMenu" prefHeight="43.0" prefWidth="89.0" style="-fx-font-size: 20px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="MENU" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="43.0" />
 
-    <TextField fx:id="idTF" layoutX="122.0" layoutY="331.0" prefHeight="35.0" prefWidth="67.0" style="-fx-font-size: 18px; " />
-    <TextField fx:id="amountTF" layoutX="122.0" layoutY="449.0" prefHeight="35.0" prefWidth="188.0" style="-fx-font-size: 18px; " />
-    <ChoiceBox fx:id="CBCategory" layoutX="122.0" layoutY="497.0" prefHeight="27.0" prefWidth="161.0" />
-    <DatePicker fx:id="date" layoutX="122.0" layoutY="374.0" />
-    <ChoiceBox fx:id="CBType" layoutX="122.0" layoutY="409.0" prefHeight="27.0" prefWidth="161.0" />
+    <TextField fx:id="idTF" layoutX="93.0" layoutY="422.0" minHeight="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-font-size: 10;">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+    <DatePicker fx:id="date" layoutX="93.0" layoutY="460.0" prefHeight="25.0" prefWidth="151.0" />
+    <ChoiceBox fx:id="CBType" layoutX="93.0" layoutY="499.0" prefHeight="27.0" prefWidth="152.0" />
 
-      <Button layoutX="203.0" layoutY="539.0" onAction="#handleButtonOnAction1" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: darkseagreen;" text="Update">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <Button layoutX="203.0" layoutY="334.0" onAction="#handleButtonOnAction" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: darkseagreen;" text="Delete">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="23.0" prefHeight="294.0" prefWidth="600.0">
+      <Button layoutX="528.0" layoutY="502.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonOnAction1" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: darkseagreen;" text="Update">
+         <graphic>
+            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Sync.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="431.0" layoutY="502.0" onAction="#handleButtonOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: darkseagreen;" text="Delete">
+         <graphic>
+            <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Erase.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TableView fx:id="tableView" layoutX="64.0" layoutY="129.0" prefHeight="300.0" prefWidth="574.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="110.0">
         <columns>
             <TableColumn fx:id="tvID" prefWidth="34.0" text="ID" />
           <TableColumn fx:id="tvDate" prefWidth="170.0" text="DATE" />
           <TableColumn fx:id="tvInOrOut" prefWidth="113.0" text="TYPE" />
-            <TableColumn fx:id="tvAmount" prefWidth="140.0" text="AMOUNT($)" />
-            <TableColumn fx:id="tvCategory" prefWidth="137.0" text="CATEGORY" />
+            <TableColumn fx:id="tvAmount" prefWidth="89.33331298828125" text="AMOUNT($)" />
+            <TableColumn fx:id="tvCategory" prefWidth="114.66671752929688" text="CATEGORY" />
 
         </columns>
       </TableView>
-      <VBox layoutX="22.0" layoutY="336.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
-         <children>
-            <Label text="ID" />
-            <Label text="DATE" />
-            <Label text="TYPE" />
-            <Label text="AMOUNT($)" />
-            <Label text="CATEGORY" />
-         </children>
-      </VBox>
+      <VBox layoutX="396.0" layoutY="461.0" prefHeight="27.0" prefWidth="67.0" spacing="25.0" />
+      <Label contentDisplay="CENTER" layoutX="288.0" layoutY="45.0" prefHeight="48.0" prefWidth="113.0" text="REPORT " textAlignment="CENTER" textFill="#4e9d6c" underline="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="425.0" text="ID" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="48.0" layoutY="465.0" text="DATE" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="49.0" layoutY="502.0" text="TYPE" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="350.0" layoutY="426.0" text="AMOUNT($)" AnchorPane.leftAnchor="350.0" />
+    <TextField fx:id="amountTF" layoutX="442.0" layoutY="421.0" minHeight="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-font-size: 10;">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="350.0" layoutY="464.0" text="CATEGORY" AnchorPane.leftAnchor="350.0" />
+    <ChoiceBox fx:id="CBCategory" layoutX="443.0" layoutY="459.0" prefHeight="27.0" prefWidth="150.0" />
 
          </children>
 
