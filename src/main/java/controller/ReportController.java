@@ -79,6 +79,8 @@ public class  ReportController extends ViewController implements Initializable {
 
         CBType.getItems().add(String.valueOf(InOrOut.EXPENSE));
         CBType.getItems().add(String.valueOf(InOrOut.INCOME));
+        CBCategory.getItems().add(String.valueOf(Category.CASH));
+        CBCategory.getItems().add(String.valueOf(Category.BANK));
         CBCategory.getItems().add(String.valueOf(Category.CAR));
         CBCategory.getItems().add(String.valueOf(Category.EATING_OUT));
         CBCategory.getItems().add(String.valueOf(Category.ENTERTAINMENT));

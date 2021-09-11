@@ -45,12 +45,19 @@
             prefHeight="44.0" prefWidth="262.0"
             style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: #d7ebba;"
             text="ADD EXPENSE"  />
-    <Button contentDisplay="CENTER"
+    <Button
             layoutX="60.0" layoutY="315.0"
             onAction="#handleLogout"
             prefHeight="49.0" prefWidth="125.0"
             style="-fx-background-color: darkseagreen;
-             -fx-text-fill: black; -fx-font-size: 15;" text="LOGOUT" />
+             -fx-text-fill: black; -fx-font-size: 15;" text="LOGOUT" >
+        <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../pictures/Exit.png" />
+                </image>
+            </ImageView>
+        </graphic></Button>
     <Button  contentDisplay="CENTER" layoutX="60.0" layoutY="243.0" onAction="#backToPROF" prefHeight="51.0" prefWidth="161.0" style="-fx-background-color: darkseagreen; -fx-text-fill: black; -fx-font-size: 15;" text="BACK TO PROFILE" textAlignment="CENTER" GridPane.rowIndex="12" />
    <Button layoutX="408.0" layoutY="105.0" onAction="#showSimpleReport" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: #d7ebba; -fx-text-fill: black; -fx-font-size: 20px;" text=" SIMPLE REPORT" />
    <Button layoutX="408.0" layoutY="171.0" onAction="#showTotalReport" prefHeight="51.0" prefWidth="278.0" style="-fx-background-color: #d7ebba; -fx-text-fill: black; -fx-font-size: 20px;" text=" SUMMARY REPORT" />
