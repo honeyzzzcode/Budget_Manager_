@@ -119,23 +119,11 @@ public class MoneyService {
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
         statement.setInt(1, userId);
+       statement.executeUpdate();
 
-        ResultSet result = statement.executeQuery();
+       DBHandler.close( statement, connection);
 
-        while (result.next()) {
-            moneyArrayList.add(new Money(
-                    result.getInt("id"),
-                    result.getString("inOrOut"),
-                    result.getString("category"),
-                    result.getFloat("amount"),
-                    result.getInt("userID"),
-                    result.getTimestamp("createdAt"),
-                    result.getTimestamp("updatedAt")
-            ));
-        }
-        DBHandler.close(result, statement, connection);
-
-    }
+   }
     public void deleteRecord(int ID , int userId) throws Exception {
         userID=userId;
         ArrayList<Money> moneyRecords = new ArrayList<>();
@@ -146,20 +134,9 @@ public class MoneyService {
         statement.setInt(1, ID);
         statement.setInt(2, userId);
 
-        ResultSet result = statement.executeQuery();
+      statement.executeUpdate();
 
-        while (result.next()) {
-            moneyRecords.add(new Money(
-                    result.getInt("id"),
-                    result.getString("inOrOut"),
-                    result.getString("category"),
-                    result.getFloat("amount"),
-                    result.getInt("userID"),
-                    result.getTimestamp("createdAt"),
-                    result.getTimestamp("updatedAt")
-            ));
-        }
-        DBHandler.close(result, statement, connection);
+        DBHandler.close( statement, connection);
 
     }
 

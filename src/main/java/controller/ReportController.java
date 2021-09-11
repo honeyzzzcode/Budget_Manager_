@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.AppData;
 import model.Money;
@@ -25,6 +22,16 @@ public class  ReportController extends ViewController implements Initializable {
 
   public TableView<Money> tableView;
 
+    public TextField dateTF;
+    public TextField categoryTF;
+    public TextField typeTF;
+    public TextField amountTF;
+    public TextField idTF;
+
+    @FXML
+    private Button btnUpdate;
+    @FXML
+    private Button btnDelete;
     @FXML
     private TableColumn<Money, String> tvDate;
     @FXML
@@ -37,10 +44,7 @@ public class  ReportController extends ViewController implements Initializable {
     @FXML
     private TableColumn<Money, String> tvCategory;
 
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnDelete;
+
 
     public void showMenu(ActionEvent actionEvent) {
         try {
@@ -74,13 +78,26 @@ public class  ReportController extends ViewController implements Initializable {
             e.printStackTrace();
         }
     }
-@FXML
-    public void handleButtonAction(ActionEvent actionEvent) {
-        /*if(actionEvent.getSource() == btnUpdate){
-            service.updateRecord();
+
+
+    public void handleButtonOnAction(ActionEvent actionEvent) throws Exception {
+
+            System.out.println("hello");
+           service.deleteRecord(Integer.parseInt(idTF.getText()),AppData.getInstance().getLoggedInUserId() );
+        ObservableList<Money> recList = FXCollections.observableArrayList();
+
+        ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+        for (Money money : moneyRecords) {
+            recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
         }
-        else if(actionEvent.getSource() == btnDelete){
-            service.deleteRecord(ID);
-        }*/
+        tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
+        tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
+        tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
+        tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
+        tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
+
+        tableView.setItems(recList);
+            showAlert("Success ", "Record deleted , continue", Alert.AlertType.CONFIRMATION);
+        }
     }
-}
+
