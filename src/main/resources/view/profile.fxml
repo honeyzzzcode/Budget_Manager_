@@ -11,21 +11,21 @@
 <AnchorPane maxHeight="600.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: F5FFFA;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
     <Label alignment="CENTER" layoutX="254.0" layoutY="77.0" style="-fx-font-size: 30; -fx-text-fill: green;" text="USER PROFILE" textFill="#147b48" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-    <Label layoutX="187.0" layoutY="130.0" text="Username :" GridPane.rowIndex="3">
+    <Label alignment="TOP_LEFT" layoutX="121.0" layoutY="131.0" text="Username :" GridPane.rowIndex="3">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
     <Label fx:id="userNameLabel" layoutX="359.0" layoutY="132.0" style="-fx-font-size: 12px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-    <Label layoutX="173.0" layoutY="291.0" text="Phone Number :" GridPane.rowIndex="6">
+    <Label layoutX="118.0" layoutY="292.0" text="Phone Number :" GridPane.rowIndex="6">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
     <Label fx:id="phoneNumberLabel" layoutX="376.0" layoutY="293.0" style="-fx-font-size: 12px;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-    <Label layoutX="176.0" layoutY="205.0" text="Email Address :" GridPane.rowIndex="4">
+    <Label layoutX="121.0" layoutY="198.0" text="Email Address :" GridPane.rowIndex="4">
         <font>
             <Font name="System Bold Italic" size="14.0" />
         </font>
@@ -34,23 +34,23 @@
 
     <Label layoutX="118.0" layoutY="248.0" prefHeight="29.0" prefWidth="206.0" style="-fx-font-size: 24; -fx-text-fill: green;" text="CURRENT BUDGET" GridPane.rowIndex="5" />
     <Label fx:id="budgetLabel" layoutX="358.0" layoutY="254.0" style="-fx-font-size: 16px;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-    <Label layoutX="460.0" layoutY="245.0" style="-fx-font-size: 30px;"  GridPane.columnIndex="2" GridPane.rowIndex="5" />
+    <Label layoutX="460.0" layoutY="245.0" style="-fx-font-size: 30px;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 
-    <Label layoutX="200.0" layoutY="169.0" text="Name :" GridPane.rowIndex="2">
+    <Label layoutX="121.0" layoutY="170.0" text="Name :" GridPane.rowIndex="2">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
     <Label fx:id="nameLabel" layoutX="340.0" layoutY="171.0" prefHeight="15.0" prefWidth="38.0" style="-fx-font-size: 12px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-    <Label layoutX="178.0" layoutY="382.0" text="Last Updated :" GridPane.rowIndex="7">
+    <Label layoutX="120.0" layoutY="384.0" text="Last Updated :" GridPane.rowIndex="7">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
     <Label fx:id="updatedAtLabel" layoutX="358.0" layoutY="393.0" style="-fx-font-size: 12px;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 
-    <Label layoutX="192.0" layoutY="337.0" text="Created : " GridPane.rowIndex="8">
+    <Label layoutX="121.0" layoutY="338.0" text="Created : " GridPane.rowIndex="8">
         <font>
             <Font size="14.0" />
         </font>
@@ -63,7 +63,7 @@
         </image>
     </ImageView>
 
-    <Button layoutX="397.0" layoutY="426.0" onAction="#handleLogout" prefHeight="45.0" prefWidth="127.0" snapToPixel="false" style="-fx-background-color: palegreen; -fx-text-fill: black; -fx-font-size: 18px;" text="LOGOUT" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+    <Button layoutX="397.0" layoutY="426.0" onAction="#handleLogout" prefHeight="45.0" prefWidth="127.0" snapToPixel="false" style="-fx-background-color: d7ebba; -fx-text-fill: black; -fx-font-size: 18px;" text="LOGOUT" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
     <Button alignment="BOTTOM_CENTER" layoutX="175.0" layoutY="429.0" onAction="#showMenu" prefHeight="40.0" prefWidth="134.0" style="-fx-font-size: 20px; -fx-text-fill: black; -fx-background-color: darkseagreen;" text="MENU" GridPane.rowIndex="10" />
 

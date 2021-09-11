@@ -33,8 +33,8 @@
   <Label text="Email Address" GridPane.columnIndex="0" GridPane.rowIndex="10" />
   <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
-  <Button onAction="#handleLoadLogin" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Login" GridPane.columnIndex="0" GridPane.rowIndex="11" />
-  <Button onAction="#handleRegistration" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+  <Button onAction="#handleLoadLogin" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="Login" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+  <Button onAction="#handleRegistration" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="11" />
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />

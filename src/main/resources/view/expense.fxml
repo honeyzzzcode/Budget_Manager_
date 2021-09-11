@@ -23,7 +23,7 @@
 
     <ChoiceBox fx:id="CBCategory" prefHeight="27.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
     
-    <Button onAction="#addExpense" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: palegreen;" text="PRESS TO ADD" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+    <Button onAction="#addExpense" style="-fx-font-size: 14px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="PRESS TO ADD" GridPane.columnIndex="1" GridPane.rowIndex="11" />
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />

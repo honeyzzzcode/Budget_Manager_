@@ -32,8 +32,8 @@
   <Label layoutX="74.0" layoutY="359.0" style="-fx-font-size: 18px; " text="Enter your password" />
   <PasswordField fx:id="passwordField" layoutX="262.0" layoutY="353.0" style="-fx-font-size: 18px; " />
 
-  <Button layoutX="151.0" layoutY="410.0" onAction="#handleLoadRegister" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Register" />
-  <Button layoutX="306.0" layoutY="410.0" onAction="#handleUserLogin" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: palegreen;" text="Login" />
+  <Button layoutX="151.0" layoutY="410.0" onAction="#handleLoadRegister" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="Register" />
+  <Button layoutX="306.0" layoutY="410.0" onAction="#handleUserLogin" style="-fx-font-size: 18px; -fx-text-fill: black; -fx-background-color: d7ebba;" text="Login" />
 
   <Label fx:id="notificationLabel" />
 

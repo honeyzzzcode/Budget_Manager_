@@ -32,7 +32,7 @@
         <Label layoutX="21.0" layoutY="55.0" text="Start Date" />
         <Label layoutX="21.0" layoutY="96.0" text="EndDate" />
 
-        <Button layoutX="447.0" layoutY="43.0" onAction="#showMenu" prefHeight="40.0" prefWidth="96.0" style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: palegreen;" text="MENU" AnchorPane.rightAnchor="28.0" />
+        <Button layoutX="447.0" layoutY="43.0" onAction="#showMenu" prefHeight="40.0" prefWidth="96.0" style="-fx-font-size: 20; -fx-text-fill: black; -fx-background-color: d7ebba;" text="MENU" AnchorPane.rightAnchor="28.0" />
 
     </children>
 
