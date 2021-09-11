@@ -1,6 +1,8 @@
 package controller;
 
+import Types.Category;
 import Types.InOrOut;
+import com.sun.javafx.binding.DoubleConstant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,12 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.StringConverter;
 import model.AppData;
 import model.Money;
 import service.MoneyService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -27,7 +32,9 @@ public class  ReportController extends ViewController implements Initializable {
     public TextField typeTF;
     public TextField amountTF;
     public TextField idTF;
-
+    public ChoiceBox<String> CBCategory;
+    public ChoiceBox<String> CBType;
+    public DatePicker date;
     @FXML
     private Button btnUpdate;
     @FXML
@@ -58,9 +65,38 @@ public class  ReportController extends ViewController implements Initializable {
     MoneyService service = new MoneyService();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        date.setConverter(
+                new StringConverter<LocalDate>() {
+                    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                    @Override
+                    public String toString(LocalDate date) {
+                        return (date != null) ? dateFormatter.format(date) : "";
+                    }
+
+                    @Override
+                    public LocalDate fromString(String string) {
+                        return (string != null && !string.isEmpty())
+                                ? LocalDate.parse(string, dateFormatter)
+                                : null;
+                    }
+                });
+
+        CBType.getItems().add(String.valueOf(InOrOut.EXPENSE));
+        CBType.getItems().add(String.valueOf(InOrOut.INCOME));
+        CBCategory.getItems().add(String.valueOf(Category.CAR));
+        CBCategory.getItems().add(String.valueOf(Category.EATING_OUT));
+        CBCategory.getItems().add(String.valueOf(Category.ENTERTAINMENT));
+        CBCategory.getItems().add(String.valueOf(Category.GIFTS));
+        CBCategory.getItems().add(String.valueOf(Category.GROCERIES));
+        CBCategory.getItems().add(String.valueOf(Category.TRANSPORT));
+        CBCategory.getItems().add(String.valueOf(Category.SHOPPING));
+        CBCategory.getItems().add(String.valueOf(Category.GOALS));
+        ObservableList<Money> recList = FXCollections.observableArrayList();
         try {
 
-            ObservableList<Money> recList = FXCollections.observableArrayList();
 
             ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
 
@@ -82,7 +118,6 @@ public class  ReportController extends ViewController implements Initializable {
 
     public void handleButtonOnAction(ActionEvent actionEvent) throws Exception {
 
-            System.out.println("hello");
            service.deleteRecord(Integer.parseInt(idTF.getText()),AppData.getInstance().getLoggedInUserId() );
         ObservableList<Money> recList = FXCollections.observableArrayList();
 
@@ -99,5 +134,33 @@ public class  ReportController extends ViewController implements Initializable {
         tableView.setItems(recList);
             showAlert("Success ", "Record deleted , continue", Alert.AlertType.CONFIRMATION);
         }
+
+    public void handleButtonOnAction1(ActionEvent actionEvent) throws Exception {
+        service.updateRecord(
+                date.getValue()
+                ,
+                Integer.parseInt(idTF.getText()),
+                Float.parseFloat(amountTF.getText()),
+                CBType.getValue(),
+               CBCategory.getValue(),
+                AppData.getInstance().getLoggedInUserId() );
+
+
+
+        ObservableList<Money> recList = FXCollections.observableArrayList();
+
+        ArrayList<Money>  moneyRecords = this.service.getAllMoneyRecords(AppData.getInstance().getLoggedInUserId());
+        for (Money money : moneyRecords) {
+            recList.add(new Money( money.getID(), money.getCreatedAt(),money.getInOrOut(), money.getAmount(), money.getCategory()));
+        }
+        tvID.setCellValueFactory(new PropertyValueFactory<Money, Integer >("ID"));
+        tvDate.setCellValueFactory(new PropertyValueFactory<Money, String>("createdAt"));
+        tvInOrOut.setCellValueFactory(new PropertyValueFactory<Money, InOrOut>("inOrOut"));
+        tvAmount.setCellValueFactory(new PropertyValueFactory<Money, Float>("amount"));
+        tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
+
+        tableView.setItems(recList);
+        showAlert("Success ", "Record updated , continue", Alert.AlertType.INFORMATION);
     }
+}
 

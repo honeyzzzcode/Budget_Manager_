@@ -81,6 +81,7 @@ public class MoneyService {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setFloat(1,user.getBudget());
         statement.setInt(2,userId);
+
         statement.executeUpdate();
         DBHandler.close(statement, connection);
 
@@ -111,14 +112,19 @@ public class MoneyService {
         return moneyRecords;
     }
 
-   public void updateRecord(int userId) throws Exception {
+   public void updateRecord(LocalDate date, int id, float amount, String type, String category, int userId) throws Exception {
         userID=userId;
         ArrayList<Money> moneyArrayList = new ArrayList<>();
         connection = DBHandler.getConnection();
-        String query = "UPDATE money SET createdAt = ? AND inOrOut = ? AND amount = ? AND category = ? WHERE userID = ?";
+        String query = "UPDATE money SET createdAt = ? ' 00:00:00' , inOrOut = ? , amount = ? , category = ? WHERE userID = ? AND id = ?";
         Connection connection1 = DBHandler.getConnection();
         PreparedStatement statement = connection1.prepareStatement(query);
-        statement.setInt(1, userId);
+        statement.setDate(1,Date.valueOf(date));
+        statement.setString(2, type);
+       statement.setFloat(3, amount);
+       statement.setString(4, category);
+       statement.setInt(5, userID);
+       statement.setInt(6,id );
        statement.executeUpdate();
 
        DBHandler.close( statement, connection);

@@ -26,7 +26,6 @@ public class ExpenseController extends ViewController implements Initializable {
     MoneyService moneyService = new MoneyService();
 
     public TextField amountField;
-    public TextField categoryField;
 
 
     public void addExpense(ActionEvent actionEvent) {
@@ -48,7 +47,7 @@ public class ExpenseController extends ViewController implements Initializable {
             moneyService.updateBudget(user, user.getId());
 
 
-            showAlert("Success", "Expense added successfully, continue", Alert.AlertType.CONFIRMATION);
+            showAlert("Success", "Expense added successfully, continue", Alert.AlertType.INFORMATION);
             changeScene(actionEvent, "menu");
         } catch (Exception e) {
             showAlert("Adding Expense Failed", e.getMessage(), Alert.AlertType.ERROR);

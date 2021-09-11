@@ -50,7 +50,7 @@ public class IncomeController extends ViewController implements Initializable {
 
 
 
-            showAlert("Success", "Income added successfully, continue", Alert.AlertType.CONFIRMATION);
+            showAlert("Success", "Income added successfully, continue", Alert.AlertType.INFORMATION);
             changeScene(actionEvent, "menu");
         }catch (Exception e) {
             showAlert("Adding Income Failed", e.getMessage(), Alert.AlertType.ERROR);
