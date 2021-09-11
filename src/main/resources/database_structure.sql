@@ -1,17 +1,5 @@
 
-
-
-Username: JEG8yfLAZs
-
-Database name: JEG8yfLAZs
-
-Password: trMJx2LweS
-
-Server: remotemysql.com
-
-Port: 3306
-
-use JEG8yfLAZs;
+use BM;
 
 create table users(
     id int not null auto_increment,

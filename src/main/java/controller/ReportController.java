@@ -132,7 +132,7 @@ public class  ReportController extends ViewController implements Initializable {
         tvCategory.setCellValueFactory(new PropertyValueFactory<Money, String>("category"));
 
         tableView.setItems(recList);
-            showAlert("Success ", "Record deleted , continue", Alert.AlertType.CONFIRMATION);
+            showAlert("Success ", "Record deleted , continue", Alert.AlertType.INFORMATION);
         }
 
     public void handleButtonOnAction1(ActionEvent actionEvent) throws Exception {
